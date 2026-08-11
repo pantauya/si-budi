@@ -1,0 +1,633 @@
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+      xmlns:w="urn:schemas-microsoft-com:office:word" 
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<title>Kamus Data & Skema Basis Data SI-BUDI</title>
+<style>
+  body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    color: #1e293b;
+    line-height: 1.6;
+    margin: 20px;
+  }
+  h1 {
+    color: #0284c7;
+    border-bottom: 3px solid #0284c7;
+    padding-bottom: 8px;
+    font-size: 24pt;
+    font-family: 'Calibri Light', sans-serif;
+    margin-bottom: 20px;
+  }
+  h2 {
+    color: #0f172a;
+    margin-top: 25pt;
+    font-size: 16pt;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 5px;
+  }
+  h3 {
+    color: #0369a1;
+    margin-top: 15pt;
+    font-size: 12pt;
+  }
+  p, li {
+    font-size: 11pt;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  th {
+    background-color: #0284c7;
+    color: #ffffff;
+    border: 1px solid #0284c7;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 10pt;
+  }
+  td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 10pt;
+  }
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  .highlight {
+    background-color: #f1f5f9;
+    font-family: 'Consolas', monospace;
+    font-size: 9pt;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .info-box {
+    background-color: #f0f9ff;
+    border-left: 4px solid #0284c7;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 10.5pt;
+  }
+</style>
+</head>
+<body>
+
+  <h1>DOKUMENTASI BASIS DATA SI-BUDI</h1>
+  <p><strong>Sistem Informasi Bukti Dukung &amp; Evaluasi Kinerja Bulanan - BPS Kabupaten Sigi</strong></p>
+  
+  <div class="info-box">
+    <strong>Teknologi Basis Data:</strong> PostgreSQL (Hosted on Supabase Cloud)<br>
+    <strong>Object-Relational Mapping (ORM):</strong> Prisma ORM
+  </div>
+
+  <h2>1. Ringkasan Hubungan Tabel (ERD Textual)</h2>
+  <ul>
+    <li><strong>User</strong> dapat memiliki banyak <strong>AnnualPlan</strong> (SKP Tahunan) dan membuat banyak <strong>Activity</strong>.</li>
+    <li>Setiap <strong>Team</strong> memiliki banyak <strong>TeamMember</strong> (menghubungkan User ke Team).</li>
+    <li><strong>Activity</strong> (Kegiatan Bulanan) merujuk ke satu <strong>AnnualPlan</strong> dan diisi oleh pembuat serta dapat ditag ke kolaborator/anggota tim melalui <strong>ActivityMember</strong>.</li>
+    <li><strong>EvidenceFile</strong> diunggah oleh User dan ditautkan ke satu atau lebih Activity melalui tabel relasi <strong>ActivityEvidence</strong>.</li>
+    <li><strong>Assessment</strong> (Penilaian Kinerja) diberikan oleh Ketua Tim / Pimpinan kepada Activity tertentu.</li>
+    <li><strong>ActivityLog</strong> mencatat aktivitas perubahan data yang dilakukan oleh User.</li>
+  </ul>
+
+  <h2>2. Kamus Data &amp; Spesifikasi Tabel</h2>
+
+  <!-- TABLE 1: User -->
+  <h3>Tabel: User</h3>
+  <p>Menyimpan data identitas pegawai, pimpinan, dan administrator sistem.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik identitas user.</td>
+      </tr>
+      <tr>
+        <td class="highlight">nip</td>
+        <td>String</td>
+        <td>Unique, Required</td>
+        <td>Nomor Induk Pegawai (NIP) resmi.</td>
+      </tr>
+      <tr>
+        <td class="highlight">name</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Nama lengkap pegawai.</td>
+      </tr>
+      <tr>
+        <td class="highlight">username</td>
+        <td>String</td>
+        <td>Unique, Required</td>
+        <td>Username untuk login sistem.</td>
+      </tr>
+      <tr>
+        <td class="highlight">password</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Hash password akun user.</td>
+      </tr>
+      <tr>
+        <td class="highlight">role</td>
+        <td>Enum (Role)</td>
+        <td>Default: anggota</td>
+        <td>Hak akses: admin, ketua_tim, anggota, pimpinan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Waktu pembuatan akun.</td>
+      </tr>
+      <tr>
+        <td class="highlight">updatedAt</td>
+        <td>DateTime</td>
+        <td>Auto Update</td>
+        <td>Waktu pembaruan akun terakhir.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 2: Team -->
+  <h3>Tabel: Team</h3>
+  <p>Menyimpan data tim kerja di lingkungan BPS Kabupaten Sigi.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik tim kerja.</td>
+      </tr>
+      <tr>
+        <td class="highlight">name</td>
+        <td>String</td>
+        <td>Unique, Required</td>
+        <td>Nama tim (contoh: Neraca, IPDS, Sosial).</td>
+      </tr>
+      <tr>
+        <td class="highlight">description</td>
+        <td>String (Text)</td>
+        <td>Nullable</td>
+        <td>Deskripsi singkat fungsi tim.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Waktu pembuatan record tim.</td>
+      </tr>
+      <tr>
+        <td class="highlight">updatedAt</td>
+        <td>DateTime</td>
+        <td>Auto Update</td>
+        <td>Waktu pembaruan data tim.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 3: TeamMember -->
+  <h3>Tabel: TeamMember</h3>
+  <p>Tabel jembatan (pivot) keanggotaan pegawai di dalam tim kerja.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik keanggotaan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">teamId</td>
+        <td>String (UUID)</td>
+        <td>FK (Team)</td>
+        <td>Referensi ke tabel Team.</td>
+      </tr>
+      <tr>
+        <td class="highlight">userId</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>Referensi ke tabel User.</td>
+      </tr>
+      <tr>
+        <td class="highlight">role</td>
+        <td>String</td>
+        <td>Default: anggota</td>
+        <td>Peran spesifik di tim (ketua / anggota).</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal bergabung ke tim.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 4: AnnualPlan -->
+  <h3>Tabel: AnnualPlan</h3>
+  <p>Menyimpan Butir Rencana Kinerja (SKP) Tahunan pegawai.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik rencana kinerja tahunan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">userId</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>Pemilik rencana kinerja.</td>
+      </tr>
+      <tr>
+        <td class="highlight">title</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Butir uraian Rencana Kinerja Utama.</td>
+      </tr>
+      <tr>
+        <td class="highlight">year</td>
+        <td>Int</td>
+        <td>Default: 2026</td>
+        <td>Tahun pelaksanaan rencana kinerja.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal sinkronisasi/input.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 5: Activity -->
+  <h3>Tabel: Activity</h3>
+  <p>Menyimpan data rencana kinerja bulanan beserta volume dan tautan folder Google Drive.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik kegiatan bulanan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">name</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Uraian kegiatan bulanan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">status</td>
+        <td>Enum (ActivityStatus)</td>
+        <td>Default</td>
+        <td>BELUM_DILAKSANAKAN, SEDANG_BERLANGSUNG, MENUNGGU_BUKTI, LENGKAP, DINILAI.</td>
+      </tr>
+      <tr>
+        <td class="highlight">targetVolume</td>
+        <td>Float</td>
+        <td>Required</td>
+        <td>Jumlah target output kegiatan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">unit</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Satuan output (Dokumen, Laporan, Kuesioner).</td>
+      </tr>
+      <tr>
+        <td class="highlight">annualPlanId</td>
+        <td>String (UUID)</td>
+        <td>FK (AnnualPlan)</td>
+        <td>Tautan ke butir SKP induk tahunan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">teamId</td>
+        <td>String (UUID)</td>
+        <td>FK (Team), Nullable</td>
+        <td>Referensi tim penanggung jawab.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdById</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>ID pembuat kegiatan bulanan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">googleDriveFolderLink</td>
+        <td>String</td>
+        <td>Nullable</td>
+        <td>Tautan folder utama Google Drive kegiatan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">dateSubmitted</td>
+        <td>DateTime</td>
+        <td>Nullable</td>
+        <td>Waktu pengumpulan bukti pertama kali.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal penetapan kegiatan.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 6: ActivityMember -->
+  <h3>Tabel: ActivityMember</h3>
+  <p>Menyimpan data kolaborator kegiatan (pegawai yang ditag ke kegiatan kerja).</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik relasi kolaborator.</td>
+      </tr>
+      <tr>
+        <td class="highlight">activityId</td>
+        <td>String (UUID)</td>
+        <td>FK (Activity)</td>
+        <td>Referensi ke tabel Activity.</td>
+      </tr>
+      <tr>
+        <td class="highlight">userId</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>Referensi ke tabel User (kolaborator).</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal ditag ke kegiatan.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 7: EvidenceFile -->
+  <h3>Tabel: EvidenceFile</h3>
+  <p>Menyimpan berkas bukti dukung yang telah diunggah ke Google Drive.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik file bukti dukung.</td>
+      </tr>
+      <tr>
+        <td class="highlight">fileName</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Nama file berkas bukti dukung asli.</td>
+      </tr>
+      <tr>
+        <td class="highlight">driveLink</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Tautan url publik berkas di Google Drive.</td>
+      </tr>
+      <tr>
+        <td class="highlight">uploadedById</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>Pegawai yang mengunggah berkas.</td>
+      </tr>
+      <tr>
+        <td class="highlight">uploadedAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Waktu pengunggahan berkas.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 8: ActivityEvidence -->
+  <h3>Tabel: ActivityEvidence</h3>
+  <p>Menyimpan relasi multi-berkas bukti dukung untuk satu kegiatan bulanan.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik relasi berkas-kegiatan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">activityId</td>
+        <td>String (UUID)</td>
+        <td>FK (Activity)</td>
+        <td>Referensi ke tabel Activity.</td>
+      </tr>
+      <tr>
+        <td class="highlight">evidenceFileId</td>
+        <td>String (UUID)</td>
+        <td>FK (EvidenceFile)</td>
+        <td>Referensi ke tabel EvidenceFile.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Waktu penautan bukti ke kegiatan.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 9: Assessment -->
+  <h3>Tabel: Assessment</h3>
+  <p>Menyimpan data evaluasi/penilaian kinerja bulanan oleh Pimpinan/Ketua Tim.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik penilaian kinerja.</td>
+      </tr>
+      <tr>
+        <td class="highlight">activityId</td>
+        <td>String (UUID)</td>
+        <td>FK (Activity)</td>
+        <td>Kegiatan yang dinilai.</td>
+      </tr>
+      <tr>
+        <td class="highlight">evaluatorId</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>ID pejabat penilai (Ketua Tim/Pimpinan).</td>
+      </tr>
+      <tr>
+        <td class="highlight">capaian</td>
+        <td>Float</td>
+        <td>Default: 0</td>
+        <td>Nilai capaian volume (Bobot 50%).</td>
+      </tr>
+      <tr>
+        <td class="highlight">kepatuhan</td>
+        <td>Float</td>
+        <td>Default: 0</td>
+        <td>Nilai ketepatan waktu pengumpulan (Bobot 30%).</td>
+      </tr>
+      <tr>
+        <td class="highlight">profesionalisme</td>
+        <td>Float</td>
+        <td>Default: 0</td>
+        <td>Nilai kualitas output berkas (Bobot 20%).</td>
+      </tr>
+      <tr>
+        <td class="highlight">nilaiAkhir</td>
+        <td>Float</td>
+        <td>Default: 0</td>
+        <td>Kalkulasi pembobotan nilai akhir SKP bulanan.</td>
+      </tr>
+      <tr>
+        <td class="highlight">predikat</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Predikat nilai (Sangat Baik, Baik, Butuh Perbaikan).</td>
+      </tr>
+      <tr>
+        <td class="highlight">feedback</td>
+        <td>String</td>
+        <td>Nullable</td>
+        <td>Catatan evaluasi/umpan balik dari penilai.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal penilaian diinput.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TABLE 10: ActivityLog -->
+  <h3>Tabel: ActivityLog</h3>
+  <p>Menyimpan rekam jejak audit (*audit trail*) aktivitas pengguna pada sistem.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nama Kolom</th>
+        <th style="width: 20%;">Tipe Data</th>
+        <th style="width: 15%;">Atribut</th>
+        <th>Keterangan / Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">id</td>
+        <td>String (UUID)</td>
+        <td>PK, Default</td>
+        <td>ID unik log audit.</td>
+      </tr>
+      <tr>
+        <td class="highlight">userId</td>
+        <td>String (UUID)</td>
+        <td>FK (User)</td>
+        <td>Pelaku aktivitas.</td>
+      </tr>
+      <tr>
+        <td class="highlight">action</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>Nama aksi (CREATE_ACTIVITY, UPLOAD_EVIDENCE, dll).</td>
+      </tr>
+      <tr>
+        <td class="highlight">details</td>
+        <td>String</td>
+        <td>Nullable</td>
+        <td>Uraian rincian log aktivitas audit.</td>
+      </tr>
+      <tr>
+        <td class="highlight">createdAt</td>
+        <td>DateTime</td>
+        <td>Default (now)</td>
+        <td>Tanggal &amp; waktu terjadinya aksi.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

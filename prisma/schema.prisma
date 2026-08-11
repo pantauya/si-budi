@@ -1,0 +1,217 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  ketua_tim
+  anggota
+  pimpinan
+}
+
+enum ActivityStatus {
+  BELUM_DILAKSANAKAN
+  SEDANG_BERLANGSUNG
+  MENUNGGU_BUKTI
+  LENGKAP
+  DINILAI
+}
+
+model User {
+  id                   String                 @id @default(uuid())
+  nip                  String                 @unique
+  name                 String
+  username             String                 @unique
+  password             String // Hanya untuk demo/fallback, utama menggunakan Supabase Auth
+  role                 Role                   @default(anggota)
+  kipappId             String?                @unique
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  
+  // Relations
+  teamMemberships      TeamMember[]
+  annualPlans          AnnualPlan[]
+  activitiesCreated    Activity[]             @relation("ActivityCreator")
+  activityMemberships  ActivityMember[]
+  uploadedFiles        EvidenceFile[]
+  assessmentsGiven     Assessment[]           @relation("Evaluator")
+  logs                 ActivityLog[]
+  reuseRequests        EvidenceReuseRequest[]
+}
+
+model Team {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  description String?
+  kipappId    String?      @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  
+  // Relations
+  members     TeamMember[]
+  activities  Activity[]
+  projects    Project[]
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  teamId    String
+  userId    String
+  role      String   @default("anggota") // "ketua" atau "anggota"
+  createdAt DateTime @default(now())
+  
+  // Relations
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+}
+
+model AnnualPlan {
+  id        String     @id @default(uuid())
+  userId    String
+  title     String
+  year      Int        @default(2026)
+  kipappId  String?    @unique
+  parentId  String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  // Relations
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activities Activity[]
+  parent     AnnualPlan?  @relation("PlanHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children   AnnualPlan[] @relation("PlanHierarchy")
+  projects   Project[]
+}
+
+model Project {
+  id           String       @id @default(uuid())
+  name         String
+  kipappId     String?      @unique
+  teamId       String
+  annualPlanId String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  // Relations
+  team         Team         @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  annualPlan   AnnualPlan?  @relation(fields: [annualPlanId], references: [id], onDelete: SetNull)
+  activities   Activity[]
+}
+
+model Activity {
+  id           String           @id @default(uuid())
+  name         String
+  status       ActivityStatus   @default(BELUM_DILAKSANAKAN)
+  targetVolume Float
+  unit         String
+  annualPlanId String
+  teamId       String?
+  projectId    String?
+  createdById  String
+  dateSubmitted DateTime?
+  googleDriveFolderLink String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  
+  // Relations
+  annualPlan   AnnualPlan       @relation(fields: [annualPlanId], references: [id], onDelete: Cascade)
+  team         Team?            @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  project      Project?         @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  creator      User             @relation("ActivityCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  members      ActivityMember[]
+  evidences    ActivityEvidence[]
+  assessments  Assessment[]
+}
+
+model ActivityMember {
+  id         String   @id @default(uuid())
+  activityId String
+  userId     String
+  createdAt  DateTime @default(now())
+  
+  // Relations
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([activityId, userId])
+}
+
+model EvidenceFile {
+  id          String             @id @default(uuid())
+  fileName    String
+  driveLink   String
+  uploadedById String
+  uploadedAt  DateTime           @default(now())
+  
+  // Relations
+  uploader    User               @relation(fields: [uploadedById], references: [id], onDelete: Cascade)
+  activities  ActivityEvidence[]
+  reuseRequests EvidenceReuseRequest[]
+}
+
+model ActivityEvidence {
+  id             String       @id @default(uuid())
+  activityId     String
+  evidenceFileId String
+  createdAt      DateTime     @default(now())
+  
+  // Relations
+  activity       Activity     @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  evidenceFile   EvidenceFile @relation(fields: [evidenceFileId], references: [id], onDelete: Cascade)
+
+  @@unique([activityId, evidenceFileId])
+}
+
+model EvidenceReuseRequest {
+  id             String       @id @default(uuid())
+  evidenceFileId String
+  requestedById  String
+  approvedById   String?
+  status         String       @default("PENDING") // PENDING, APPROVED, REJECTED
+  reason         String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  // Relations
+  evidenceFile   EvidenceFile @relation(fields: [evidenceFileId], references: [id], onDelete: Cascade)
+  requester      User         @relation(fields: [requestedById], references: [id], onDelete: Cascade)
+}
+
+model Assessment {
+  id              String   @id @default(uuid())
+  activityId      String
+  evaluatorId     String
+  capaian         Float    @default(0) // Bobot 50%
+  kepatuhan       Float    @default(0) // Bobot 30%
+  profesionalisme Float    @default(0) // Bobot 20%
+  nilaiAkhir      Float    @default(0)
+  predikat        String
+  feedback        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  activity        Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  evaluator       User     @relation("Evaluator", fields: [evaluatorId], references: [id], onDelete: Cascade)
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  userId    String
+  action    String
+  details   String?
+  createdAt DateTime @default(now())
+  
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
