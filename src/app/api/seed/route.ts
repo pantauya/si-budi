@@ -150,7 +150,9 @@ export async function GET() {
 
     const allTeams = await prisma.team.findMany()
     for (const t of allTeams) {
-      dbTeams.set(t.kipappId, t)
+      if (t.kipappId) {
+        dbTeams.set(t.kipappId, t)
+      }
     }
 
     // 5. Create Team Memberships
@@ -227,7 +229,9 @@ export async function GET() {
     const allPlans = await prisma.annualPlan.findMany()
     const dbPlans = new Map<string, any>()
     for (const p of allPlans) {
-      dbPlans.set(p.kipappId, p)
+      if (p.kipappId) {
+        dbPlans.set(p.kipappId, p)
+      }
     }
 
     // Link parent-child hierarchy in batches to prevent database pool exhaustion
