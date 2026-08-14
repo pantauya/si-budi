@@ -37,33 +37,6 @@ export default function LoginPage() {
     }
   }
 
-  const quickLogin = async (roleUsername: string) => {
-    setUsername(roleUsername)
-    setPassword('password123')
-    setError('')
-    setLoading(true)
-
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: roleUsername, password: 'password123' })
-      })
-      const data = await response.json()
-
-      if (data.success) {
-        router.push('/dashboard')
-        router.refresh()
-      } else {
-        setError(data.error)
-      }
-    } catch (err) {
-      setError('Koneksi bermasalah.')
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <main className="flex-1 flex flex-col justify-center items-center px-4 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
       {/* Visual Background Elements */}
@@ -125,30 +98,6 @@ export default function LoginPage() {
             {loading ? 'Masuk...' : 'Masuk ke Dasbor'}
           </button>
         </form>
-
-        <div className="relative my-6 text-center">
-          <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-800/80"></div></div>
-          <span className="relative bg-slate-950 px-3 text-xs text-slate-500 tracking-wider uppercase font-medium">Demo Quick Login</span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2 text-xs">
-          <button onClick={() => quickLogin('kepala')} className="px-3 py-2 bg-slate-900/50 hover:bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:text-white transition-all text-left flex flex-col">
-            <span className="font-bold text-sky-400">Kepala</span>
-            <span className="text-[10px] text-slate-400 truncate">Budi Santoso</span>
-          </button>
-          <button onClick={() => quickLogin('ketuatim')} className="px-3 py-2 bg-slate-900/50 hover:bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:text-white transition-all text-left flex flex-col">
-            <span className="font-bold text-indigo-400">Ketua Tim</span>
-            <span className="text-[10px] text-slate-400 truncate">Andi Pratama</span>
-          </button>
-          <button onClick={() => quickLogin('pegawai')} className="px-3 py-2 bg-slate-900/50 hover:bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:text-white transition-all text-left flex flex-col">
-            <span className="font-bold text-emerald-400">Anggota</span>
-            <span className="text-[10px] text-slate-400 truncate">Rian Hidayat</span>
-          </button>
-          <button onClick={() => quickLogin('admin')} className="px-3 py-2 bg-slate-900/50 hover:bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:text-white transition-all text-left flex flex-col">
-            <span className="font-bold text-amber-400">Admin</span>
-            <span className="text-[10px] text-slate-400 truncate">Sistem</span>
-          </button>
-        </div>
       </div>
     </main>
   )

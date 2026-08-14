@@ -79,7 +79,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, targetVolume, unit, annualPlanId, createdById, members, evidenceLink, createdAt } = body
+    const { name, targetVolume, unit, annualPlanId, createdById, members, evidenceLink, createdAt, startDate, endDate } = body
 
     // 1. Create activity
     const activity = await prisma.activity.create({
@@ -90,6 +90,8 @@ export async function POST(request: Request) {
         annualPlanId,
         createdById,
         status: 'SEDANG_BERLANGSUNG',
+        startDate: startDate ? new Date(startDate) : null,
+        endDate: endDate ? new Date(endDate) : null,
         ...(createdAt ? { createdAt: new Date(createdAt) } : {})
       }
     })

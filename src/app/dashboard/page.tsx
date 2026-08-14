@@ -34,6 +34,8 @@ interface Activity {
   evidences: { evidenceFile: { id: string; driveLink: string; fileName: string; uploader?: User } }[]
   assessments: Assessment[]
   createdAt: string
+  startDate?: string
+  endDate?: string
   googleDriveFolderLink?: string
 }
 
@@ -74,7 +76,8 @@ export default function DashboardPage() {
   const [actUnit, setActUnit] = useState('')
   const [actPlanId, setActPlanId] = useState('')
   const [actMembers, setActMembers] = useState<string[]>([])
-  const [actDateVal, setActDateVal] = useState(new Date().toISOString().split('T')[0])
+  const [actStartDate, setActStartDate] = useState(new Date().toISOString().split('T')[0])
+  const [actEndDate, setActEndDate] = useState(new Date().toISOString().split('T')[0])
 
   // UI Theme & Layout States
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
@@ -247,7 +250,9 @@ export default function DashboardPage() {
           annualPlanId: actPlanId,
           createdById: currentUser.id,
           members: currentUser.role === 'ketua_tim' ? actMembers : [],
-          createdAt: actDateVal ? new Date(actDateVal).toISOString() : undefined
+          startDate: actStartDate,
+          endDate: actEndDate,
+          createdAt: actStartDate ? new Date(actStartDate).toISOString() : undefined
         })
       })
       const data = await res.json()
@@ -283,7 +288,8 @@ export default function DashboardPage() {
         setActPlanId('')
         setActMembers([])
         setActivityUploadFiles([])
-        setActDateVal(new Date().toISOString().split('T')[0])
+        setActStartDate(new Date().toISOString().split('T')[0])
+        setActEndDate(new Date().toISOString().split('T')[0])
         setShowActivityModal(false)
       } else {
         alert('Gagal membuat kegiatan: ' + data.error)
@@ -886,6 +892,11 @@ export default function DashboardPage() {
                         <h4 className="text-sm font-semibold text-slate-100">{act.name}</h4>
                         <p className="text-xs text-slate-400 truncate"><span className="text-slate-500 font-medium">SKP Induk:</span> {act.annualPlan?.title}</p>
                         <p className="text-xs text-slate-400">Target: <strong className="text-slate-300">{act.targetVolume} {act.unit}</strong></p>
+                        {act.startDate && act.endDate ? (
+                          <p className="text-xs text-slate-400">Rentang Waktu: <strong className="text-slate-300">{new Date(act.startDate).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})} - {new Date(act.endDate).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})}</strong></p>
+                        ) : (
+                          <p className="text-xs text-slate-400">Tanggal: <strong className="text-slate-300">{new Date(act.createdAt).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})}</strong></p>
+                        )}
                         
                         {/* Evidence shared link info */}
                         {hasEvidence ? (
@@ -1046,10 +1057,19 @@ export default function DashboardPage() {
                     const day = idx + 1
                     const dayDate = new Date(year, month, day)
                     const dayActivities = activities.filter(act => {
-                      const actDate = new Date(act.createdAt)
-                      return actDate.getDate() === day &&
-                             actDate.getMonth() === month &&
-                             actDate.getFullYear() === year
+                      if (act.startDate && act.endDate) {
+                        const start = new Date(act.startDate)
+                        start.setHours(0,0,0,0)
+                        const end = new Date(act.endDate)
+                        end.setHours(23,59,59,999)
+                        const current = new Date(year, month, day, 12, 0, 0, 0)
+                        return current >= start && current <= end
+                      } else {
+                        const actDate = new Date(act.createdAt)
+                        return actDate.getDate() === day &&
+                               actDate.getMonth() === month &&
+                               actDate.getFullYear() === year
+                      }
                     })
 
                     return (
@@ -1223,15 +1243,28 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tanggal Kegiatan</label>
-              <input
-                required
-                type="date"
-                value={actDateVal}
-                onChange={(e) => setActDateVal(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tanggal Mulai</label>
+                <input
+                  required
+                  type="date"
+                  value={actStartDate}
+                  onChange={(e) => setActStartDate(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tanggal Selesai</label>
+                <input
+                  required
+                  type="date"
+                  value={actEndDate}
+                  onChange={(e) => setActEndDate(e.target.value)}
+                  min={actStartDate}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                />
+              </div>
             </div>
 
             {/* Tagging Members (Pegawai) - Only shown to ketua_tim role */}
