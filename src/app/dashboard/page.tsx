@@ -37,6 +37,7 @@ interface Activity {
   startDate?: string
   endDate?: string
   googleDriveFolderLink?: string
+  isVerified: boolean
 }
 
 interface Assessment {
@@ -396,6 +397,29 @@ export default function DashboardPage() {
     }
   }
 
+  const handleToggleVerify = async (id: string, currentStatus: boolean) => {
+    if (!currentUser) return
+    try {
+      const res = await fetch(`/api/activities/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          isVerified: !currentStatus
+        })
+      })
+      const data = await res.json()
+      if (data.success) {
+        // Refresh list
+        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
+        const listData = await listRes.json()
+        if (listData.success) setActivities(listData.activities)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   if (!currentUser) return null
 
   // Calculate quick stats
@@ -403,6 +427,7 @@ export default function DashboardPage() {
   const completedAct = activities.filter(a => a.status === 'DINILAI').length
   const pendingAct = activities.filter(a => a.status === 'MENUNGGU_BUKTI').length
   const inProgressAct = activities.filter(a => a.status === 'SEDANG_BERLANGSUNG').length
+  const verifiedAct = activities.filter(a => a.isVerified).length
 
   const evaluatedActivities = activities.filter(a => a.status === 'DINILAI')
   const avgScore = evaluatedActivities.length > 0
@@ -772,10 +797,14 @@ export default function DashboardPage() {
           {activeTab === 'summary' && (
             <div className="space-y-8">
               {/* Stat grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
                 <div className="glass p-6 rounded-xl border border-slate-800/80">
                   <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Kegiatan</span>
                   <span className="block text-3xl font-bold mt-2 text-white">{totalAct}</span>
+                </div>
+                <div className="glass p-6 rounded-xl border border-slate-800/80">
+                  <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Lengkap & Relevan</span>
+                  <span className="block text-3xl font-bold mt-2 text-teal-400">{verifiedAct}</span>
                 </div>
                 <div className="glass p-6 rounded-xl border border-slate-800/80">
                   <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Telah Dinilai</span>
@@ -891,6 +920,12 @@ export default function DashboardPage() {
                                      DINILAI
                                    </span>
                                  )
+                               } else if (act.isVerified) {
+                                 return (
+                                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/15 text-teal-400 border border-teal-500/30">
+                                     LENGKAP & RELEVAN
+                                   </span>
+                                 )
                                } else if (act.evidences && act.evidences.length > 0) {
                                  return (
                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
@@ -974,6 +1009,14 @@ export default function DashboardPage() {
                                )
                              }
                            })()}
+                           {act.isVerified && (
+                             <span className="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-teal-500/10 text-teal-400 border border-teal-500/20 flex items-center gap-1">
+                               <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                               </svg>
+                               BUKTI RELEVAN
+                             </span>
+                           )}
                           <span className="text-[10px] text-slate-500">Milik: <strong className="text-slate-400">{act.creator.name}</strong></span>
                           
                           {act.members.length > 1 && (
@@ -1081,6 +1124,22 @@ export default function DashboardPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                             </svg>
                             {hasEvidence ? 'Edit Bukti Dukung' : 'Unggah Bukti Dukung'}
+                          </button>
+                        )}
+
+                        {currentUser.role === 'ketua_tim' && act.evidences && act.evidences.length > 0 && (
+                          <button
+                            onClick={() => handleToggleVerify(act.id, act.isVerified)}
+                            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-all cursor-pointer ${
+                              act.isVerified 
+                                ? 'bg-teal-950/40 border-teal-800 text-teal-400 hover:bg-teal-900/40' 
+                                : 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-200'
+                            }`}
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {act.isVerified ? 'Batalkan Verifikasi' : 'Verifikasi Bukti'}
                           </button>
                         )}
 

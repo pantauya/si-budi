@@ -125,6 +125,8 @@ model Activity {
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
   
+  isVerified   Boolean          @default(false)
+  
   // Relations
   annualPlan   AnnualPlan?      @relation(fields: [annualPlanId], references: [id], onDelete: Cascade)
   team         Team?            @relation(fields: [teamId], references: [id], onDelete: SetNull)

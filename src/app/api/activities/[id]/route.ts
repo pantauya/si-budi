@@ -6,7 +6,7 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
   try {
     const { id } = params
     const body = await request.json()
-    const { status, evidenceLink, userId } = body
+    const { status, evidenceLink, userId, isVerified } = body
 
     let activity = await prisma.activity.findUnique({ where: { id } })
     if (!activity) {
@@ -49,7 +49,8 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
       where: { id },
       data: {
         status: status || activity.status,
-        dateSubmitted: evidenceLink ? new Date() : activity.dateSubmitted
+        dateSubmitted: evidenceLink ? new Date() : activity.dateSubmitted,
+        isVerified: typeof isVerified === 'boolean' ? isVerified : activity.isVerified
       },
       include: {
         annualPlan: true,
@@ -61,11 +62,20 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
     })
 
     // Log the update activity
+    let logAction = 'UPDATE_ACTIVITY';
+    let logDetails = `Memperbarui status/bukti kegiatan: ${activity.name}`;
+    if (typeof isVerified === 'boolean') {
+      logAction = isVerified ? 'VERIFY_EVIDENCE' : 'UNVERIFY_EVIDENCE';
+      logDetails = isVerified 
+        ? `Memverifikasi bukti dukung relevan untuk kegiatan: ${activity.name}`
+        : `Membatalkan verifikasi bukti dukung untuk kegiatan: ${activity.name}`;
+    }
+
     await prisma.activityLog.create({
       data: {
         userId: userId || activity.createdById,
-        action: 'UPDATE_ACTIVITY',
-        details: `Memperbarui status/bukti kegiatan: ${activity.name}`
+        action: logAction,
+        details: logDetails
       }
     })
 
