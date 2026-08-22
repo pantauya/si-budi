@@ -1,0 +1,2962 @@
+[
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Mempelajari pedoman dan materi publisitas ST2023",
+    "outputRincian": "Pemahaman materi dan pedoman publisitas",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyusun rencana pelaksanaan kegiatan publisitas",
+    "outputRincian": "Rencana pelaksanaan kegiatan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Berkoordinasi dengan pemerintah daerah dan instansi terkait",
+    "outputRincian": "Hasil koordinasi/Notulen",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyiapkan bahan dan media publisitas",
+    "outputRincian": "Paket bahan publisitas (banner, leaflet, infografis, presentasi, dll.)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) kegiatan",
+    "outputRincian": "Dokumen KAK",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyusun pengajuan anggaran melalui BOS",
+    "outputRincian": "Dokumen pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Membuat Surat Tugas pelaksanaan",
+    "outputRincian": "Surat Tugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Melaksanakan kegiatan sosialisasi/publisitas hasil ST2023",
+    "outputRincian": "Kegiatan publisitas yang terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Melakukan dokumentasi kegiatan",
+    "outputRincian": "Dokumentasi kegiatan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyusun laporan pelaksanaan publisitas",
+    "outputRincian": "Laporan kegiatan publisitas",
+    "satuan": "laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Publisitas Hasil ST2023",
+    "rincian": "Menyiapkan administrasi pertanggungjawaban kegiatan",
+    "outputRincian": "SPJ lengkap",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Mengikuti pelatihan Instruktur Daerah (INDA)",
+    "outputRincian": "Pelatihan selesai diikuti",
+    "satuan": "Sertifikat/daftar hadir"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Mengecek jumlah sampel",
+    "outputRincian": "Sampel",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Petugas teralokasi",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menawarkan pekerjaan di Simitra",
+    "outputRincian": "Pekerjaan diterima oleh calon petugas",
+    "satuan": "kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK yang telah ditandatangani pimpinan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyiapkan administrasi pelatihan",
+    "outputRincian": "Berkas administrasi pelatihan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Pelatihan selesai diikuti",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Mengassign petugas ke aplikasi FASIH",
+    "outputRincian": "Petugas terassign",
+    "satuan": "kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan lengkap",
+    "satuan": "paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyusun KAK kegiatan",
+    "outputRincian": "KAK",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyusun KAK translok pengawasan",
+    "outputRincian": "KAK",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pengawasan",
+    "outputRincian": "Pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Melakukan pengawasan lapangan",
+    "outputRincian": "Pengawasan telah dilakukan",
+    "satuan": "laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Melakukan pemeriksaan data di FASIH-SM",
+    "outputRincian": "Pemeriksaan telah dilakukan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "administrasi pencairan lengkap",
+    "satuan": "paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat KAK Pencairan honor pengajar",
+    "outputRincian": "KAK",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pengajar",
+    "outputRincian": "Pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Survei Ekonomi Pertanian",
+    "rincian": "Menyiapkan administrasi pencairan honor pengajar",
+    "outputRincian": "administrasi pencairan lengkap",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Kehutanan",
+    "rincian": "Tidak Ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Perikanan, TPI/PPI/PP",
+    "rincian": "Tidak Ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Bulanan",
+    "rincian": "Tidak Ada dialihkan ke triwulanan",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Mempelajari pedoman pelaksanaan Survei IBS Tahunan",
+    "outputRincian": "Pemahaman pedoman dan konsep survei",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Mengecek jumlah perusahaan sampel",
+    "outputRincian": "Rekapitulasi jumlah perusahaan sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Memutakhirkan direktori perusahaan sampel",
+    "outputRincian": "Direktori perusahaan yang telah diperbarui",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menawarkan pekerjaan di Simitra",
+    "outputRincian": "Petugas menerima penawaran pekerjaan",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyusun KAK perjalanan/translok petugas",
+    "outputRincian": "Dokumen KAK perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk perjalanan/translok",
+    "outputRincian": "Dokumen pengajuan anggaran perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Tahunan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Mengecek jumlah sampel",
+    "outputRincian": "Rekapitulasi jumlah sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Memutakhirkan direktori usaha sampel (jika diperlukan)",
+    "outputRincian": "Direktori usaha yang telah diperbarui",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menawarkan pekerjaan di Simitra (jika diperlukan)",
+    "outputRincian": "Petugas menerima penawaran pekerjaan",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyusun KAK kegiatan pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyusun KAK perjalanan/translok petugas",
+    "outputRincian": "Dokumen KAK perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk perjalanan/translok",
+    "outputRincian": "Dokumen pengajuan anggaran perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IBS Triwulanan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Mempelajari pedoman pelaksanaan Survei IMK Tahunan",
+    "outputRincian": "Pemahaman pedoman dan konsep survei",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Mengecek jumlah usaha/perusahaan sampel",
+    "outputRincian": "Rekapitulasi jumlah sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Memutakhirkan direktori usaha sampel (jika diperlukan)",
+    "outputRincian": "Direktori usaha yang telah diperbarui",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menawarkan pekerjaan di Simitra (jika diperlukan)",
+    "outputRincian": "Petugas menerima penawaran pekerjaan",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyusun KAK kegiatan pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyusun KAK perjalanan/translok petugas",
+    "outputRincian": "Dokumen KAK perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk perjalanan/translok",
+    "outputRincian": "Dokumen pengajuan anggaran perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Tahunan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Mengecek jumlah sampel",
+    "outputRincian": "Rekapitulasi jumlah sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Memutakhirkan direktori usaha sampel (jika diperlukan)",
+    "outputRincian": "Direktori usaha yang telah diperbarui",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menawarkan pekerjaan di Simitra (jika diperlukan)",
+    "outputRincian": "Petugas menerima penawaran pekerjaan",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyusun KAK kegiatan pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyusun KAK perjalanan/translok petugas",
+    "outputRincian": "Dokumen KAK perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk perjalanan/translok",
+    "outputRincian": "Dokumen pengajuan anggaran perjalanan/translok",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "IMK Triwulanan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Pengolahan Survei Ekonomi Pertanian",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Industri",
+    "aktivitas": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Industri",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Sumber Daya Hayati",
+    "aktivitas": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Sumber Daya Hayati",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Sumber Daya Hayati",
+    "aktivitas": "Penyediaan dan Pembinaan Data 5 Sasaran Visi IE dan 45 IUP Statistik Sumber Daya Hayati",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Penyusunan Sistem Informasi Geospasial Hasil ST2023",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Sensus Pertanian",
+    "aktivitas": "Probity Audit ST2023",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Karakteristik Usaha",
+    "rincian": "tidak ada",
+    "outputRincian": "",
+    "satuan": ""
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Mempelajari pedoman pelaksanaan Survei Perusahaan Konstruksi Triwulanan",
+    "outputRincian": "Pemahaman pedoman dan konsep survei",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Mengecek jumlah perusahaan sampel",
+    "outputRincian": "Rekapitulasi jumlah perusahaan sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Memutakhirkan direktori perusahaan sampel (jika diperlukan)",
+    "outputRincian": "Direktori perusahaan sampel yang telah diperbarui",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Melakukan rekrutmen/penawaran pekerjaan melalui Simitra (jika diperlukan)",
+    "outputRincian": "Daftar petugas hasil rekrutmen",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyusun KAK perjalanan/pengawasan",
+    "outputRincian": "Dokumen KAK perjalanan/pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk pengawasan",
+    "outputRincian": "Dokumen pengajuan anggaran pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Perusahaan Konstruksi Triwulanan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Mempelajari pedoman pelaksanaan Survei Perusahaan Konstruksi Tahunan",
+    "outputRincian": "Pemahaman pedoman dan konsep survei",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Mengecek jumlah perusahaan sampel",
+    "outputRincian": "Rekapitulasi jumlah perusahaan sampel yang telah diverifikasi",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Memutakhirkan direktori perusahaan sampel (jika diperlukan)",
+    "outputRincian": "Direktori perusahaan sampel yang telah diperbarui",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas lapangan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Melakukan rekrutmen/penawaran pekerjaan melalui Simitra (jika diperlukan)",
+    "outputRincian": "Daftar petugas hasil rekrutmen",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyiapkan administrasi pelatihan petugas",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Meng-assign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas ter-assign pada aplikasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) pendataan",
+    "outputRincian": "Dokumen KAK pendataan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pendataan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyusun KAK perjalanan/pengawasan",
+    "outputRincian": "Dokumen KAK perjalanan/pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk pengawasan",
+    "outputRincian": "Dokumen pengajuan anggaran pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Melakukan monitoring dan pengawasan lapangan",
+    "outputRincian": "Laporan hasil monitoring dan pengawasan",
+    "satuan": "kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Melakukan pemeriksaan dan validasi hasil pendataan",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menindaklanjuti data yang belum lengkap atau tidak wajar",
+    "outputRincian": "Data yang telah diperbaiki/terverifikasi",
+    "satuan": "kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyusun laporan pelaksanaan kegiatan",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Konstruksi Tahunan",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Mengikuti pelatihan Instruktur Daerah (INDA)",
+    "outputRincian": "Sertifikat/daftar hadir pelatihan dan materi pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Mengecek jumlah sampel perusahaa",
+    "outputRincian": "Rekapitulasi jumlah sampel yang telah diverifikasi",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Melakukan updating direktori perusahaan",
+    "outputRincian": "Direktori perusahaan yang telah diperbarui",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Dokumen alokasi petugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menawarkan pekerjaan di Simitra (jika diperlukan)",
+    "outputRincian": "Daftar pelamar dan hasil rekrutmen",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "Surat Keputusan penugasan petugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyiapkan administrasi pelatihan",
+    "outputRincian": "Paket administrasi pelatihan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Mengassign petugas ke aplikasi pendataan",
+    "outputRincian": "Petugas telah aktif pada aplikasi",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK)",
+    "outputRincian": "Dokumen KAK",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyusun KAK translok pengawasan",
+    "outputRincian": "Dokumen KAK pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk translok/honor pengawasan",
+    "outputRincian": "Dokumen pengajuan anggaran",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Melakukan pengawasan lapangan",
+    "outputRincian": "Laporan hasil pengawasan",
+    "satuan": "laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Melakukan pemeriksaan dan validasi data",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyusun laporan hasil survei",
+    "outputRincian": "Laporan pelaksanaan survei",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Industri",
+    "aktivitas": "Survei Pertambangan, Energi, Penggalian, Captive Power dan Updating Direktori",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas administrasi pencairan honor lengkap",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Rencana Anggaran Biaya (RAB) KSA Padi & Jagung",
+    "outputRincian": "Dokumen KAK & RAB KSA",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim Kerja & Petugas Pengamatan KSA Padi & Jagung (PCS & PMS)",
+    "outputRincian": "SK Petugas KSA Padi & Jagung",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pengamatan lapangan",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan KSA",
+    "outputRincian": "Dokumen Administrasi Supervisi",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melaksanakan Briefing Petugas KSA Padi & Jagung di awal tahun (Penyegaran Metodologi & Fitur Aplikasi Mobile)",
+    "outputRincian": "Kegiatan Briefing Petugas Awal Tahun",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyiapkan dan mendistribusikan perlengkapan lapangan petugas (Peta Segmen, ID Card, Perlengkapan Safety)",
+    "outputRincian": "Paket Perlengkapan Lapangan Petugas",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan alokasi/assign segmen sampel KSA Padi & Jagung kepada petugas pencacah di website Manajemen KSA oleh Admin",
+    "outputRincian": "Segmen Sampel Ter-assign di Web Manajemen KSA",
+    "satuan": "Segmen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Mengajukan penggantian sampel pada website KSA Pengganti Sampel",
+    "outputRincian": "Kegiatan mencari titik sampel baru dan mengajukan. Kemudian menunggu pusat setujui",
+    "satuan": "Kegiatan/Sistem"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan pencarian dan penentuan titik koordinat/subsegmen lokasi amatan menggunakan GPS / Peta Segmen",
+    "outputRincian": "Titik Subsegmen Teridentifikasi Presisi",
+    "satuan": "Titik/Lokasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan pengamatan lapangan dan pengambilan foto tutupan lahan/fase tumbuh tanaman (padi/jagung) via Aplikasi Mobile KSA tiap bulan",
+    "outputRincian": "Foto & Data Fase Tumbuh Terambil",
+    "satuan": "Titik/Lokasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Input dan submit hasil pengamatan fase tumbuh tanaman serta kondisi lahan pada Aplikasi Mobile KSA tiap bulan",
+    "outputRincian": "Data KSA Ter-submit di Aplikasi Mobile",
+    "satuan": "Titik/Lokasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan verifikasi dan pemeriksaan awal hasil pengamatan segmen oleh Pengawas (PMS)  tiap bulan",
+    "outputRincian": "Hasil Verifikasi Pengawas (PMS)",
+    "satuan": "Titik/Lokasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyusun rencana dan jadwal supervisi/pemeriksaan pengamatan lapangan KSA Padi & Jagung",
+    "outputRincian": "Dokumen Rencana Supervisi KSA",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melaksanakan monitoring inkonsistensi pengamatan fase tumbuh secara berkala melalui menu Monitoring pada website Manajemen KSA  tiap bulan",
+    "outputRincian": "Tabel/Laporan Monitoring Inkonsistensi Web",
+    "satuan": "Dokumen/System Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melaksanakan supervisi lapangan ke segmen sampel untuk konfirmasi kesesuaian foto dan fase tumbuh di lapangan",
+    "outputRincian": "Kegiatan Supervisi Lapangan Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan koordinasi dan konfirmasi kepada pencacah apabila terdeteksi indikasi inkonsistensi di website Manajemen KSA",
+    "outputRincian": "Catatan Konfirmasi Inkonsistensi Data",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Memberikan arahan, koreksi teknis, dan pembinaan saat ditemukannya kendala penentuan fase tumbuh tanaman di lapangan",
+    "outputRincian": "Sesi Pembinaan Petugas Lapangan",
+    "satuan": "Sesi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyusun laporan hasil pelaksanaan supervisi dan pengawasan KSA Padi & Jagung",
+    "outputRincian": "Laporan Hasil Supervisi KSA",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan pemantauan kelengkapan dan ketercapaian submit data seluruh segmen sampel bulanan pada website Manajemen KSA  tiap bulan",
+    "outputRincian": "Laporan Kelengkapan Submit Segmen",
+    "satuan": "Dokumen/Tabel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melakukan perbaikan/pemutakhiran isian fase tumbuh berdasarkan hasil tindak lanjut konfirmasi inkonsistensi data",
+    "outputRincian": "Data KSA Clean & Konsisten di Web Manajemen",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Membuat Berita Acara Non-respon untuk subsegmen yang tidak bisa diakses",
+    "outputRincian": "Berita Acara Non respon",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Menyusun dan memfinalisasi Laporan Akhir Pelaksanaan Pendataan KSA Tahunan",
+    "outputRincian": "Hasil Analisis Pemotongan Ternak Besar",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan Terintegrasi Dengan Kerangka Sampel Area",
+    "aktivitas": "Pendataan Statistik Pertanian Tanaman Pangan Terintegrasi Dengan Metode Kerangka Sampel Area (KSA)",
+    "rincian": "Melaksanakan Rapat Evaluasi Kegiatan KSA Padi & Jagung di akhir tahun (Evaluasi Kinerja Fieldwork & Pengoperasian Sistem)",
+    "outputRincian": "Laporan Evaluasi Akhir Tahun KSA",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Rencana Anggaran Biaya (RAB) Survei Ubinan",
+    "outputRincian": "Dokumen KAK & RAB Survei Ubinan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Penetapan dan penarikan sampel Ubinan Padi dan Palawijaberbasis hasil pengamatan fase tumbuh Kerangka Sampel Area (KSA)",
+    "outputRincian": "Dokumen Sampel Ubinan Padi (Eks KSA)",
+    "satuan": "Dokumen/File"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan pemutakhiran/updating kerangka sampel untuk Ubinan Palawija (Jagung, Kedelai, Ubi Kayu, Ubi Jalar, Kacang Tanah, Kacang Hijau) per subround",
+    "outputRincian": "Dokumen Hasil Updating Sampel Ubinan Palawija",
+    "satuan": "Dokumen Kecamatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim Kerja & Petugas Pendataan Survei Ubinan (PCL & PML)",
+    "outputRincian": "SK Petugas Survei Ubinan",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan (PCL/PML)",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan",
+    "outputRincian": "Dokumen Administrasi Supervisi",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyiapkan administrasi dan dokumen pengganti biaya responden (uang lelah/pemberian kompensasi responden ubinan) Persubround",
+    "outputRincian": "Dokumen Administrasi Biaya Responden",
+    "satuan": "Dokumen/Berkas tiap subround"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melaksanakan Pelatihan / Briefing Petugas Survei Ubinan (Teknis Pengubinan, Alat Ubinan, & Pengoperasian FASIH SM)",
+    "outputRincian": "Kegiatan Pelatihan/Briefing Petugas",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyiapkan dan mendistribusikan alat ubinan (Alat Pematang Plots, Timbangan Digital/Gantung, Uji Kadar Air, Kantong), ID Card, & Perlengkapan Lapangan",
+    "outputRincian": "Paket Alat Ubinan & Perlengkapan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan alokasi/assign sampel Ubinan (Padi & Palawija) tiap subround/bulan kepada petugas di website FASIH SM persubround",
+    "outputRincian": "Sampel Ubinan Ter-assign di FASIH SM",
+    "satuan": "Sampel persubround"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan koordinasi dengan Tani / PPL / Ketua Kelompok Tani untuk pemantauan perkiraan jadwal panen (prakiraan panen) persampelnya",
+    "outputRincian": "Catatan/Jadwal Prakiraan Panen Lapangan",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan verifikasi kesiapan petak lahan panen sampel ubinan di lapangan sebelum hari pemanenan persampelnya",
+    "outputRincian": "Hasil Verifikasi Petak Sampel Ubinan",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan prosedur penggantian sampel ubinan (apabila terjadi kondisi lewat panen, fuso, atau tidak dapat diakses) sesuai pedoman teknis persampelnya",
+    "outputRincian": "Assign Penggantian Sampel Ubinan",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan proses pelepasan plot ubinan (ukuran 2.5m x 2.5m), pemotongan rumpun tanaman, perontokan, dan penimbangan berat kotor/bersih  persampelnya",
+    "outputRincian": "Data Hasil Pengukuran & Penimbangan Ubinan",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Pemberian biaya pengganti/kompensasi kepada petani responden ubinan beserta penandatanganan bukti tanda terima  persampelnya",
+    "outputRincian": "Bukti Tanda Terima Biaya Responden",
+    "satuan": "Dokumen/Tanda Terima"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Input dan submit data hasil pengukuran ubinan,foto lokasi, serta karakteristik petak ke dalam Aplikasi FASIH Mobile / Web  persampelnya",
+    "outputRincian": "Data Ubinan Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan pemeriksaan awal dan verifikasi isian ubinan oleh Pengawas (PML) di sistem FASIH SM  persampelnya",
+    "outputRincian": "Hasil Verifikasi Pengawas (PML)",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyusun rencana, jadwal, dan alokasi tim supervisi pelaksanaan pengubinan di lapangan persubround",
+    "outputRincian": "Dokumen Rencana Supervisi Ubinan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melaksanakan supervisi lapangan dan Melakukan verifikasi kesesuaian penerapan metodologi ubinan (ukuran plot, akurasi timbangan)",
+    "outputRincian": "Kegiatan Supervisi Lapangan Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Memberikan arahan, koreksi, dan pembinaan teknis saat ditemukannya kendala penentuan jadwal panen atau penimbangan di lapangan",
+    "outputRincian": "Sesi Pembinaan Petugas Lapangan",
+    "satuan": "Sesi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyusun laporan hasil pelaksanaan supervisi dan pengawasan Survei Ubinan",
+    "outputRincian": "Laporan Hasil Supervisi Ubinan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan pembersihan data (data cleaning & validation) rincian ubinan di FASIH SM",
+    "outputRincian": "Data Ubinan Ter-validasi",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Pemeriksaan dan persetujuan akhir (Approve by Admin) atas data Survei Ubinan di website FASIH SM",
+    "outputRincian": "Data Ubinan Approved by Admin di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melaksanakan Rapat Koordinasi (Rakor) Penentuan Produktivitas Seprovinsi bersama BPS Provinsi, BPS Kabupaten/Kota, dan Dinas Pertanian",
+    "outputRincian": "Rakor Produktivitas Seprovinsi",
+    "satuan": "Kegiaatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Menyusun dan memfinalisasi Laporan Akhir Pelaksanaan Pendataan Ubinan Tahunan",
+    "outputRincian": "Hasil Analisis Pemotongan Ternak Besar",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Pertanian Tanaman Pangan/Ubinan",
+    "rincian": "Melaksanakan Rapat Evaluasi Menyeluruh Pelaksanaan Survei Ubinan (Evaluasi Fieldwork, Sistem FASIH SM, & Metodologi)",
+    "outputRincian": "Laporan Evaluasi Kegiatan Ubinan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Rencana Anggaran Biaya (RAB) Survei Konversi Gabah ke Beras (SKGB) Kering dan Giling",
+    "outputRincian": "Dokumen KAK & RAB SKGB",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim Kerja & Petugas Pendataan SKGB (PCL & PML)",
+    "outputRincian": "SK Petugas Survei SKGB",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan (PCL/PML) Perbulannya",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan Perbulannya",
+    "outputRincian": "Dokumen Administrasi Supervisi",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyiapkan administrasi dan dokumen pengganti biaya responden (uang lelah/pemberian kompensasi responden SKGB)",
+    "outputRincian": "Dokumen Administrasi Biaya Responden",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Koordinasi dan pelaksanaan administrasi peminjaman alat pengukur kadar air (Moisture Meter) ke Dinas Pertanian/terkait akibat keterbatasan unit alat",
+    "outputRincian": "Dokumen/Surat Peminjaman Moisture Meter",
+    "satuan": "Dokumen/Surat"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Mengikuti Pelatihan Petugas Pendataan SKGB (PCL & PML) yang diselenggarakan/diajar langsung oleh BPS Provinsi",
+    "outputRincian": "Kegiatan Pelatihan Petugas oleh Provinsi",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyiapkan dan mendistribusikan perlengkapan pendataan, timbangan digital, moisture meter hasil pinjaman, ID Card, & kantong sampel",
+    "outputRincian": "Sampel SKGB Ter-assign di FASIH SM",
+    "satuan": "Kegiatan/Sistem"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melakukan koordinasi dengan Petani / PPL / Pengelola Penggilingan Padi untuk pemantauan jadwal panen dan penggilingan",
+    "outputRincian": "Catatan/Jadwal Jadwal Panen & Giling",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melakukan prosedur penggantian sampel SKGB Kering (apabila terjadi kondisi lewat panen, fuso, atau gagal panen) sesuai pedoman teknis",
+    "outputRincian": "Dokumen/Berita Acara Penggantian Sampel SKGB",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melakukan proses penimbangan berat gabah basah/kering, pengukuran kadar air dengan moisture meter, dan pemantauan rendemen pemanenan/penggilingan",
+    "outputRincian": "Data Penimbangan & Kadar Air SKGB",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Pemberian biaya pengganti/kompensasi kepada responden SKGB (petani/pengelola penggilingan) beserta penandatanganan bukti tanda terima",
+    "outputRincian": "Bukti Tanda Terima Biaya Responden",
+    "satuan": "Dokumen/Tanda Terima"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Input dan submit data hasil pengukuran penimbangan, kadar air, dan persentase rendemen ke dalam Aplikasi FASIH Mobile / FASIH Web",
+    "outputRincian": "Data SKGB Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Petugas Pemeriksa (PML) melakukan pemeriksaan, verifikasi isian, dan approval data pendataan SKGB di aplikasi FASIH SM",
+    "outputRincian": "Data SKGB Approved by PML di FASIH SM",
+    "satuan": "Status System/Recod"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyusun rencana, jadwal, dan alokasi tim supervisi pelaksanaan penimbangan & pengukuran SKGB di lapangan",
+    "outputRincian": "Dokumen Rencana Supervisi SKGB",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melaksanakan supervisi lapangan saat proses penimbangan gabah/beras dan kalibrasi pengukurn kadar air bersama petugas",
+    "outputRincian": "Kegiatan Supervisi Lapangan Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Menyusun laporan hasil pelaksanaan supervisi dan pengawasan Survei SKGB",
+    "outputRincian": "Laporan Hasil Supervisi SKGB",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan deteksi anomali/outlier angka konversi/rendemen SKGB di FASIH SM",
+    "outputRincian": "Daftar Anomali Data SKGB",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melakukan perbaikan anomali data (konfirmasi ulang ke PML/PCL/responden dan pemutakhiran isian di sistem)",
+    "outputRincian": "Data SKGB Clean & Bebas Anomali",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Proses pengembalian alat moisture meter hasil peminjaman ke Dinas Pertanian/terkait disertai berita acara pengembalian",
+    "outputRincian": "Berita Acara Pengembalian Alat",
+    "satuan": "Dokumen/BA"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/ Laporan Statistik Tanaman Pangan",
+    "aktivitas": "Survei Konversi Gabah ke Beras (SKGB)",
+    "rincian": "Melaksanakan Rapat Evaluasi Menyeluruh Pelaksanaan Survei SKGB (Evaluasi Fieldwork, Peralatan, Sistem FASIH SM, & Rendemen Data)",
+    "outputRincian": "Laporan Evaluasi Kegiatan SKGB",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Rencana Anggaran Biaya (RAB) Kegiatan Updating DPP DUTL",
+    "outputRincian": "Dokumen KAK & RAB Updating DPP DUTL",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim Kerja & Petugas Updating DPP DUTL (PCL & PML)",
+    "outputRincian": "SK Petugas Updating DPP DUTL",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan/updating (PCL/PML)",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan",
+    "outputRincian": "Dokumen Administrasi Supervisi",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Mengikuti/Melaksanakan Pelatihan Pengajar / Instruktur Nasional (Innas) Updating DPP DUTL",
+    "outputRincian": "Laporan/Sertifikat Pelatihan Inda",
+    "satuan": "Kegiatan/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melaksanakan Briefing / Pelatihan Petugas Updating DPP DUTL (PCL & PML) mengenai cakupan perusahaan, kuesioner, & FASIH SM",
+    "outputRincian": "Kegiatan Briefing Petugas Updating DPP DUTL",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melakukan alokasi/assign target direktori perusahaan/DUTL kepada petugas pencacah (PCL) di website FASIH SM",
+    "outputRincian": "Target DPP DUTL Ter-assign di FASIH SM",
+    "satuan": "Sampel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melakukan koordinasi teknis awal dengan dinas/instansi terkait, asosiasi usaha, atau pihak manajemen perusahaan",
+    "outputRincian": "Surat Izin Pelaksanaan Lapangan",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Petugas Pencacah (PCL) melakukan penelusuran lapangan, verifikasi keberadaan, dan wawancara dengan pengelola Perusahaan/DUTL",
+    "outputRincian": "Data hasil Wawancara/Updating Lapangan",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melakukan pendataan status keberadaan perusahaan (Aktif, Tutup, Ganti Nama/Bentuk Badan Hukum, Alih Usaha, atau Tidak Ditemukan)",
+    "outputRincian": "Record Status Keberadaan Perusahaan/DUTL",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Input dan submit data hasil updating direktori (kontak, alamat, komoditas utama, bentuk hukum, estimasi tenaga kerja/produksi) ke FASIH Mobile/Web",
+    "outputRincian": "Data Updating DPP DUTL Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Petugas Pemeriksa (PML) melakukan verifikasi, pemeriksaan kelengkapan isian, dan approval hasil updating PCL di FASIH SM",
+    "outputRincian": "Data DPP DUTL Approved by PML di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan deteksi anomali/outlier data hasil updating DPP DUTL yang telah di-approve PML di FASIH SM",
+    "outputRincian": "Daftar Anomali Data DPP DUTL",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Updating Direktori Perusahaan Pertanian (DPP) dan Direktori Usaha Pertanian Lainnya",
+    "rincian": "Melakukan perbaikan anomali data (konfirmasi ulang ke PML/PCL/perusahaan dan pemutakhiran isian di sistem)",
+    "outputRincian": "Data DPP DUTL Clean & Bebas Anomali",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Rencana Anggaran Biaya (RAB) Survei Komoditas Strategis (Komstrat) pertriwulan",
+    "outputRincian": "Dokumen KAK & RAB Survei Komstrat",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim Kerja & Petugas Pendataan Komstrat (PCL & PML)",
+    "outputRincian": "SK Petugas Survei Komstrat",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Mengikuti/Melaksanakan Pelatihan Pengajar / Instruktur Daerah (Inda) Survei Komstrat",
+    "outputRincian": "Laporan/Sertifikat Pelatihan Inda",
+    "satuan": "Kegiatan/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan listing dan triwulanan (PCL/PML)",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan",
+    "outputRincian": "Dokumen Administrasi Supervisi",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melaksanakan Briefing / Pelatihan Petugas Pendataan Komstrat (PCL & PML) mengenai metodologi listing 11 hari & pendataan triwulanan",
+    "outputRincian": "Kegiatan Briefing Petugas Komstrat",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menyiapkan dan mendistribusikan perlengkapan lapangan, ID Card, dan instrumen pendataan petugas",
+    "outputRincian": "Paket Perlengkapan Lapangan Petugas",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melakukan alokasi/assign wilayah/blok sensus beban kerja listing kepada petugas pencacah (PCL) di website FASIH SM",
+    "outputRincian": "Bebas Kerja Listing Ter-assign di FASIH SM",
+    "satuan": "Sampel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melakukan koordinasi teknis awal dengan pemerintah lokal (RT/RW/Desa/Kelurahan) sebelum pelaksanaan listing",
+    "outputRincian": "Surat Pemberitahuan Kegiatan Lapangan",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Petugas Pencacah (PCL) melaksanakan penelusuran lapangan dan pendaftaran (listing) seluruh usaha/bangunan komoditas strategis",
+    "outputRincian": "Dokumen/Record Hasil Listing Lapangan",
+    "satuan": "SLS"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Input dan submit data hasil listing komstrat ke dalam aplikasi FASIH Mobile / FASIH Web",
+    "outputRincian": "Data Listing Komstrat Ter-submit di FASIH",
+    "satuan": "SLS"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Petugas Pemeriksa (PML) melakukan verifikasi, kelengkapan isian listing, dan approval hasil listing PCL di FASIH SM",
+    "outputRincian": "Data Listing Approved by PML di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Pemeriksaan anomali/outlier data listing dan approval akhir hasil listing (Approve by Admin) di website FASIH SM",
+    "outputRincian": "Data Listing Approved by Admin di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melakukan alokasi/assign sampel target Komstrat Triwulan I, Triwulan II, dan Triwulan III kepada PCL di website FASIH SM",
+    "outputRincian": "Sampel Triwulanan Ter-assign di FASIH SM",
+    "satuan": "Sampel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Petugas Pencacah (PCL) melakukan pencacahan dan wawancara mendalam kepada responden sampel Komstrat pada tiap Triwulan oleh 7 Petugas",
+    "outputRincian": "Data Terisi Komstrat Triwulanan",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Input dan submit data pencacahan sampel triwulanan ke dalam aplikasi FASIH Mobile / FASIH Web oleh 7 Petugas",
+    "outputRincian": "Data Triwulanan Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Petugas Pemeriksa (PML) melakukan pemeriksaan, verifikasi isian, dan approval data sampel triwulanan di FASIH SM oleh 3 PML",
+    "outputRincian": "Data Triwulanan Approved by PML di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Menyusun rencana, jadwal, dan alokasi tim supervisi pelaksanaan listing dan pendataan triwulanan Komstrat",
+    "outputRincian": "Dokumen Rencana Supervisi Komstrat",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melaksanakan supervisi lapangan pada masa listing dan masa pencacahan triwulanan bersama petugas",
+    "outputRincian": "Kegiatan Supervisi Lapangan Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan deteksi anomali/outlier data pendataan triwulanan Komstrat di FASIH SM",
+    "outputRincian": "Daftar Anomali Data Triwulanan Komstrat",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati (Survei Perusahaan Perkebunan)",
+    "aktivitas": "Survei Komstrat",
+    "rincian": "Melakukan perbaikan anomali data (konfirmasi ulang ke PML/PCL/responden dan pemutakhiran isian di sistem)",
+    "outputRincian": "Data Triwulanan Clean & Bebas Anomali",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) Kegiatan Pendataan RPH/TPH",
+    "outputRincian": "Dokumen KAK Pendataan RPH",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun rencana kerja, jadwal pelaksanaan, dan alokasi anggaran pendataan RPH/TPH",
+    "outputRincian": "Dokumen Rencana Kerja dan Anggaran",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim & Petugas Pendataan RPH/TPH (Pencacah & Pengawas)",
+    "outputRincian": "SK Petugas Pendataan RPH",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melaksanakan Pelatihan / Sosialisasi Petugas Pendataan RPH/TPH",
+    "outputRincian": "Kegiatan Pelatihan Petugas",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyiapkan dan mendistribusikan perlengkapan serta dokumen pendataan lapangan RPH/TPH",
+    "outputRincian": "Paket Perlengkapan Pendataan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan alokasi/assign sampel RPH/TPH tiap bulannya kepada petugas pencacah di website FASIH SM",
+    "outputRincian": "Sampel RPH Ter-assign di FASIH SM",
+    "satuan": "Sampel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan koordinasi teknis awal dengan Pimpinan/Pengelola RPH/TPH dan Dinas Terkait",
+    "outputRincian": "Surat Izin / Catatan Koordinasi Lapangan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan pencacahan dan wawancara langsung ke pengelola/petugas pencatat RPH/TPH",
+    "outputRincian": "Data Hasil Pencacahan Lapangan",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Input dan submit data hasil pendataan RPH ke dalam aplikasi FASIH Mobile / FASIH Web",
+    "outputRincian": "Data RPH/TPH Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan pemeriksaan awal dan verifikasi internal oleh Pengawas di FASIH SM",
+    "outputRincian": "Hasil Pemeriksaan Pengawas",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun rencana dan jadwal supervisi pendataan RPH",
+    "outputRincian": "Dokumen Rencana Supervisi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melaksanakan supervisi lapangan ke lokasi RPH/TPH sampel/target",
+    "outputRincian": "Kegiatan Supervisi Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan wawancara konfirmasi dengan petugas pencacah dan pengelola RPH/TPH dan verifikasi kesesuaian pelaksanaan pendataan dengan pedoman teknis",
+    "outputRincian": "Hasil Observasi Supervisi",
+    "satuan": "Laporan/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Memberikan arahan dan pembinaan teknis saat ditemukannya kendala lapangan",
+    "outputRincian": "Sesi Pembinaan Petugas Lapangan",
+    "satuan": "Sesi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun laporan hasil pelaksanaan supervisi pendataan RPH/TPH dan Menyampaikan laporan supervisi kepada penanggung jawab kegiatan",
+    "outputRincian": "Laporan Hasil Supervisi",
+    "satuan": "Laporan/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Memantau tindak lanjut perbaikan data berdasarkan hasil supervisi",
+    "outputRincian": "Bukti Pemantauan Tindak Lanjut",
+    "satuan": "Bukti Tindak lanjut"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan validasi isian data RPH/TPH di sistem FASIH SM",
+    "outputRincian": "Data RPH/TPH Ter-validasi",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Pemeriksaan dan persetujuan akhir (Approve by Admin) atas data pendataan RPH di website FASIH SM",
+    "outputRincian": "Data RPH Approved by Admin di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melakukan rekonsiliasi data pemotongan ternak RPH dengan instansi/dinas teknis peternakan",
+    "outputRincian": "Berita Acara Rekonsiliasi Data",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan RPH/TPH (PCL/PML)",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan",
+    "outputRincian": "Dokumen Administrasi Supervisi & Pengawasan",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun Laporan kegiatan RPH/TPH Per Triwulan",
+    "outputRincian": "Hasil Analisis Pemotongan Ternak Besar",
+    "satuan": "Dokumen/Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Menyusun dan memfinalisasi Laporan Akhir Pendataan RPH/TPH Tahunan",
+    "outputRincian": "Hasil Analisis Pemotongan Ternak Besar",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Perusahaan Peternakan dan RPH/TPH",
+    "rincian": "Melaksanakan rapat evaluasi menyeluruh pelaksanaan pendataan RPH/TPH dalam penyusunan LPTB",
+    "outputRincian": "Laporan Evaluasi Kegiatan",
+    "satuan": "Laporan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyusun Kerangka Acuan Kerja (KAK) dan Anggaran Kegiatan Survei Kesejahteraan Petani (SKP)",
+    "outputRincian": "Dokumen KAK & Anggaran SKP",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyusun dan memutakhirkan Master Frame / Sampel Blok Sensus dan Rumah Tangga Petani SKP",
+    "outputRincian": "Dokumen Frame/Kerangka Sampel SKP",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menerbitkan Surat Keputusan (SK) Tim & Petugas Pendataan SKP (Pencacah & Pengawas)",
+    "outputRincian": "SK Petugas Pendataan SKP",
+    "satuan": "Dokumen/SK"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran honor petugas pendataan RPH/TPH (PCL/PML)",
+    "outputRincian": "Dokumen Administrasi Honor Petugas",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyiapkan administrasi dan kelengkapan dokumen pembayaran supervisi dan pengawasan lapangan RPH/TPH",
+    "outputRincian": "Dokumen Administrasi Supervisi & Pengawasan",
+    "satuan": "Dokumen/Berkas"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Mengikuti/Melaksanakan Pelatihan Pengajar / Instruktur Daerah (Inda) SKP",
+    "outputRincian": "Laporan/Sertifikat Pelatihan Inda",
+    "satuan": "Kegiatan/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melaksanakan Pelatihan / Sosialisasi Petugas Pendataan SKP (PCL & PML)",
+    "outputRincian": "Kegiatan Pelatihan Petugas SKP",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyiapkan dan mendistribusikan perlengkapan, instrumen, dan ID card petugas pendataan",
+    "outputRincian": "Paket Perlengkapan Pendataan SKP",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan alokasi/assign sampel rumah tangga petani SKP tiap periode/bulan di website FASIH SM",
+    "outputRincian": "Sampel SKP Ter-assign di FASIH SM",
+    "satuan": "Sampel"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan koordinasi dengan pemerintah lokal (RT/RW/Desa/Kelurahan) dan ketua kelompok tani setempat",
+    "outputRincian": "Surat Pemberitahuan Koordinasi Lapangan",
+    "satuan": "Dokumen/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan verifikasi keberadaan sampel rumah tangga petani di lapangan oleh 7 Petugas",
+    "outputRincian": "Hasil Verifikasi Sampel RT Petani",
+    "satuan": "Dokumen/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan wawancara langsung dan pencacahan rinci indikator kesejahteraan rumah tangga petani oleh 7 Petugas",
+    "outputRincian": "Kuesioner SKP Terisi",
+    "satuan": "Kuesioner/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Input dan submit data hasil pencacahan SKP ke dalam aplikasi FASIH Mobile / FASIH Web oleh 7 Petugas",
+    "outputRincian": "Data SKP Ter-submit di FASIH",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan pemeriksaan awal, pembuktian, dan verifikasi internal oleh Pengawas (PML) di FASIH SM",
+    "outputRincian": "Hasil Verifikasi Pengawas (PML)",
+    "satuan": "Record/Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyusun rencana, alokasi target, dan jadwal supervisi pendataan SKP",
+    "outputRincian": "Dokumen Rencana Supervisi SKP",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melaksanakan supervisi lapangan ke lokasi SKP sampel/target",
+    "outputRincian": "Kegiatan Supervisi Terlaksana",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan wawancara konfirmasi dengan petugas pencacah dan pengelola SKP dan verifikasi kesesuaian pelaksanaan pendataan dengan pedoman teknis",
+    "outputRincian": "Hasil Observasi Supervisi",
+    "satuan": "Laporan/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Memberikan arahan dan pembinaan teknis saat ditemukannya kendala lapangan",
+    "outputRincian": "Sesi Pembinaan Petugas Lapangan",
+    "satuan": "Sesi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Menyusun laporan hasil pelaksanaan supervisi pendataan SKP dan Menyampaikan laporan supervisi kepada penanggung jawab kegiatan",
+    "outputRincian": "Laporan Hasil Supervisi",
+    "satuan": "Laporan/Catatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan pemeriksaan, penyuntingan, dan pembersihan data (data cleaning & validation) di FASIH SM",
+    "outputRincian": "Data SKP Ter-validasi",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Melakukan perbaikan anomali data (konfirmasi ulang ke lapangan/petugas dan update isian di sistem)",
+    "outputRincian": "Data SKP Bebas Anomali (Clean)",
+    "satuan": "Record Data"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Kesejahteraan Petani",
+    "rincian": "Pemeriksaan dan persetujuan akhir (Approve by Admin) atas data SKP di website FASIH SM",
+    "outputRincian": "Data SKP Approved by Admin di FASIH SM",
+    "satuan": "Status System/Record"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Mengikuti pelatihan Instruktur Daerah (INDA)",
+    "outputRincian": "Sertifikat/daftar hadir pelatihan dan materi pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Mengecek jumlah sampel",
+    "outputRincian": "Rekapitulasi jumlah sampel yang telah diverifikasi",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyusun alokasi petugas lapangan",
+    "outputRincian": "Pembagian alokasi petugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menawarkan pekerjaan di Simitra",
+    "outputRincian": "Pengumuman lowongan dan daftar pelamar",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "Surat Keputusan penugasan petugas",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyiapkan administrasi pelatihan",
+    "outputRincian": "Paket administrasi pelatihan (undangan, daftar hadir, materi, jadwal)",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Melatih petugas pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Mengassign petugas ke aplikasi FASIH",
+    "outputRincian": "Akun petugas telah aktif dan ter-assign",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyiapkan instrumen pendataan",
+    "outputRincian": "Instrumen pendataan siap digunakan",
+    "satuan": "Paket"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyusun KAK kegiatan",
+    "outputRincian": "Dokumen Kerangka Acuan Kerja (KAK)",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Dokumen pengajuan anggaran honor pada BOS",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Membuat Surat Tugas pendataan",
+    "outputRincian": "Surat Tugas pendataan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyusun KAK translok pengawasan",
+    "outputRincian": "Dokumen KAK perjalanan/pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pengawasan",
+    "outputRincian": "Dokumen pengajuan anggaran translok pada BOS",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Membuat Surat Tugas pengawasan",
+    "outputRincian": "Surat Tugas pengawasan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Melakukan pengawasan lapangan",
+    "outputRincian": "Laporan hasil pengawasan lapangan",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Melakukan pemeriksaan data di FASIH-SM",
+    "outputRincian": "Data yang telah diperiksa dan divalidasi",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Survei Indek Produksi Hortikultura",
+    "rincian": "Menyiapkan administrasi pencairan honor petugas (BAST dan dokumentasi)",
+    "outputRincian": "Berkas pencairan honor lengkap (BAST, daftar pembayaran, dokumentasi, dan dokumen pendukung)",
+    "satuan": "dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Mengikuti pelatihan Instruktur Nasional (INNAS)",
+    "outputRincian": "Pemahaman konsep, definisi, dan teknis pelaksanaan kegiatan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Mengecek jumlah sampel",
+    "outputRincian": "Jumlah sampel yang telah diverifikasi",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menyusun alokasi petugas updating/listing",
+    "outputRincian": "Alokasi petugas updating/listing",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menawarkan pekerjaan di Simitra",
+    "outputRincian": "Penawaran pekerjaan di Simitra",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Membuat SK petugas",
+    "outputRincian": "SK petugas yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menyiapkan administrasi pelatihan",
+    "outputRincian": "Administrasi pelatihan lengkap",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Melatih petugas listing dan pendataan",
+    "outputRincian": "Petugas yang telah mengikuti pelatihan",
+    "satuan": "Kegiatan"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Meng-assign petugas ke aplikasi FASIH",
+    "outputRincian": "Petugas ter-assign pada aplikasi FASIH",
+    "satuan": "Aplikasi"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menyiapkan instrumen listing dan pendataan",
+    "outputRincian": "Instrumen listing dan pendataan siap digunakan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menyusun KAK honor listing dan pendataan",
+    "outputRincian": "KAK honor listing dan pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk honor pendataan",
+    "outputRincian": "Pengajuan anggaran honor pendataan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Membuat Surat Tugas listing dan pendataan",
+    "outputRincian": "Surat Tugas listing dan pendataan yang telah ditandatangani",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Menyusun KAK translok pengawasan",
+    "outputRincian": "KAK translok pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Membuat pengajuan anggaran di BOS untuk translok pengawasan",
+    "outputRincian": "Pengajuan anggaran translok pengawasan",
+    "satuan": "Dokumen"
+  },
+  {
+    "bidang": "Produksi",
+    "ro": "Publikasi/Laporan Statistik Sumber Daya Hayati",
+    "aktivitas": "Updating/listing Survei Pertanian Terintegrasi (sampel UTP)",
+    "rincian": "Membuat Surat Tugas pengawasan listing",
+    "outputRincian": "Surat Tugas pengawasan listing yang telah ditandatangani",
+    "satuan": "Dokumen"
+  }
+]

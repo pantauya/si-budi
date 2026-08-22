@@ -72,13 +72,16 @@ export default function DashboardPage() {
   // Form states
   const [showActivityModal, setShowActivityModal] = useState(false)
   const [actName, setActName] = useState('')
-  const [actTarget, setActTarget] = useState('')
+  const [actTarget, setActTarget] = useState('1')
   const [actUnit, setActUnit] = useState('')
   const [actPlanId, setActPlanId] = useState('')
   const [actMembers, setActMembers] = useState<string[]>([])
   const [actStartDate, setActStartDate] = useState(new Date().toISOString().split('T')[0])
   const [actEndDate, setActEndDate] = useState(new Date().toISOString().split('T')[0])
   const [isAdditionalPlan, setIsAdditionalPlan] = useState(false)
+  const [recommendations, setRecommendations] = useState<any[]>([])
+  const [searchRec, setSearchRec] = useState('')
+
 
   // UI Theme & Layout States
   const [theme, setTheme] = useState<'dark' | 'light'>('light')
@@ -192,6 +195,11 @@ export default function DashboardPage() {
           const logsData = await logsRes.json()
           if (logsData.success) setLogs(logsData.logs)
         }
+
+        // Fetch sheet 7210 recommendations
+        const recsRes = await fetch('/recommendations.json')
+        const recsData = await recsRes.json()
+        setRecommendations(recsData)
       } catch (err) {
         console.error(err)
       } finally {
@@ -292,7 +300,7 @@ export default function DashboardPage() {
 
         // Reset forms
         setActName('')
-        setActTarget('')
+        setActTarget('1')
         setActUnit('')
         setActPlanId('')
         setActMembers([])
@@ -448,6 +456,16 @@ export default function DashboardPage() {
 
     return { total, completed, avg, cut }
   }
+
+  // Filter recommendations based on search input
+  const filteredRecs = searchRec.trim()
+    ? recommendations.filter(rec =>
+        (rec.rincian && rec.rincian.toLowerCase().includes(searchRec.toLowerCase())) ||
+        (rec.ro && rec.ro.toLowerCase().includes(searchRec.toLowerCase())) ||
+        (rec.bidang && rec.bidang.toLowerCase().includes(searchRec.toLowerCase())) ||
+        (rec.aktivitas && rec.aktivitas.toLowerCase().includes(searchRec.toLowerCase()))
+      ).slice(0, 10)
+    : []
 
   return (
     <div className={`flex-1 flex flex-col md:flex-row h-screen overflow-hidden font-sans transition-colors duration-300 ${theme === 'light' ? 'light-mode bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'}`}>
@@ -1313,6 +1331,41 @@ export default function DashboardPage() {
             )}
 
             <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                Cari Rekomendasi Kegiatan (Sheet 7210)
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Ketik kata kunci kegiatan (misal: Sensus, Publisitas, Pengolahan)..."
+                  value={searchRec}
+                  onChange={(e) => setSearchRec(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                />
+                {searchRec && filteredRecs.length > 0 && (
+                  <div className="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto bg-slate-950 border border-slate-800 rounded-lg z-50 shadow-xl divide-y divide-slate-900">
+                    {filteredRecs.map((rec, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => {
+                          setActName(rec.rincian)
+                          setActUnit(rec.satuan)
+                          setSearchRec('')
+                        }}
+                        className="w-full text-left px-3 py-2 text-xs hover:bg-sky-950/40 text-slate-300 hover:text-slate-100 transition-colors"
+                      >
+                        <div className="font-semibold text-sky-400 text-[10px] uppercase tracking-wider">{rec.bidang} &raquo; {rec.ro}</div>
+                        <div className="mt-0.5">{rec.rincian}</div>
+                        <div className="text-[10px] text-slate-500 mt-0.5">Output: {rec.outputRincian} ({rec.satuan})</div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
               <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Nama / Uraian Kegiatan</label>
               <textarea
                 required
@@ -1324,28 +1377,16 @@ export default function DashboardPage() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Target Volume</label>
-                <input
-                  required
-                  type="number"
-                  value={actTarget}
-                  onChange={(e) => setActTarget(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
-                />
-              </div>
-              <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Satuan</label>
-                <input
-                  required
-                  type="text"
-                  value={actUnit}
-                  onChange={(e) => setActUnit(e.target.value)}
-                  placeholder="Laporan / Dokumen / Kuesioner"
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
-                />
-              </div>
+            <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Satuan</label>
+              <input
+                required
+                type="text"
+                value={actUnit}
+                onChange={(e) => setActUnit(e.target.value)}
+                placeholder="Laporan / Dokumen / Kuesioner"
+                className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -1400,7 +1441,6 @@ export default function DashboardPage() {
                 </div>
               </div>
             )}
-
             {/* Direct multi-file upload for Anggota */}
             {currentUser.role === 'anggota' && (
               <div>
