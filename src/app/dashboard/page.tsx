@@ -179,7 +179,7 @@ export default function DashboardPage() {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const actRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`)
+        const actRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
         const actData = await actRes.json()
         if (actData.success) setActivities(actData.activities)
 
@@ -231,7 +231,7 @@ export default function DashboardPage() {
             router.refresh()
             // reload list
             if (currentUser) {
-              fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`)
+              fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
                 .then(r => r.json())
                 .then(data => {
                   if (data.success) setActivities(data.activities)
@@ -286,7 +286,7 @@ export default function DashboardPage() {
         }
 
         // Refresh list
-        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`)
+        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
         const listData = await listRes.json()
         if (listData.success) setActivities(listData.activities)
 
@@ -335,7 +335,7 @@ export default function DashboardPage() {
 
       if (failed.length === 0) {
         // Refresh list
-        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`)
+        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
         const listData = await listRes.json()
         if (listData.success) setActivities(listData.activities)
 
@@ -372,7 +372,7 @@ export default function DashboardPage() {
 
       if (data.success) {
         // Refresh list
-        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`)
+        const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
         const listData = await listRes.json()
         if (listData.success) setActivities(listData.activities)
 
@@ -477,6 +477,9 @@ export default function DashboardPage() {
           background-color: #f1f5f9 !important;
           color: #475569 !important;
           border-color: #cbd5e1 !important;
+        }
+        .light-mode table thead tr {
+          background-color: #f1f5f9 !important;
         }
         .light-mode table td {
           color: #1e293b !important;
@@ -836,10 +839,10 @@ export default function DashboardPage() {
               {/* Recent activities list */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">Kegiatan Terbaru</h3>
-                <div className="overflow-x-auto glass rounded-xl border border-slate-800">
+                <div className="overflow-auto max-h-[450px] glass rounded-xl border border-slate-800">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-slate-800 text-slate-400 bg-slate-900/30">
+                      <tr className="border-b border-slate-800 text-slate-400 bg-slate-900/30 sticky top-0 bg-slate-950/90 backdrop-blur-sm z-10">
                         <th className="p-4 font-semibold">Nama Kegiatan</th>
                         <th className="p-4 font-semibold">Volume</th>
                         <th className="p-4 font-semibold">Status</th>
@@ -848,7 +851,7 @@ export default function DashboardPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800/50">
-                      {activities.slice(0, 5).map(act => (
+                      {activities.map(act => (
                         <tr key={act.id} className="hover:bg-slate-900/20">
                           <td className="p-4 font-medium text-slate-200">
                             <button
