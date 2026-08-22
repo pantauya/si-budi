@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import * as XLSX from 'xlsx'
 
 interface User {
   id: string
@@ -419,6 +420,48 @@ export default function DashboardPage() {
       console.error(err)
     }
   }
+
+  const exportToExcel = () => {
+    if (!currentUser) return;
+    
+    const data = activities.map((act) => {
+      const isAdditional = !act.annualPlanId;
+      
+      // Determine type of activity based on role
+      let jenisKegiatan = "";
+      if (currentUser.role === "ketua_tim") {
+        if (isAdditional) {
+          jenisKegiatan = "Kegiatan Tambahan Pegawai Sendiri";
+        } else {
+          jenisKegiatan = "Kegiatan Tim / SKP Induk";
+        }
+      } else {
+        jenisKegiatan = isAdditional ? "Kegiatan Tambahan" : "Kegiatan Utama (SKP)";
+      }
+
+      const evidenceLinks = act.evidences && act.evidences.length > 0
+        ? act.evidences.map(e => e.evidenceFile.driveLink).join('\n')
+        : 'Belum ada bukti dukung';
+
+      return {
+        'Nama Pegawai': act.creator.name,
+        'NIP': act.creator.nip,
+        'Nama Kegiatan': act.name,
+        'Rencana Kinerja (SKP)': act.annualPlan?.title || 'Kegiatan Tambahan',
+        'Jenis Kegiatan': jenisKegiatan,
+        'Satuan': act.unit,
+        'Status': act.isVerified ? 'LENGKAP & RELEVAN' : act.status,
+        'Bukti Dukung': evidenceLinks,
+        'Tanggal Mulai': act.startDate ? new Date(act.startDate).toLocaleDateString('id-ID') : '-',
+        'Tanggal Selesai': act.endDate ? new Date(act.endDate).toLocaleDateString('id-ID') : '-',
+      };
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Laporan Kinerja');
+    XLSX.writeFile(workbook, `Laporan_Kinerja_${currentUser.name.replace(/\s+/g, '_')}.xlsx`);
+  };
 
   if (!currentUser) return null
 
@@ -960,23 +1003,34 @@ export default function DashboardPage() {
           {/* TAB: ACTIVITIES */}
           {activeTab === 'activities' && (
             <div className="space-y-6">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center flex-wrap gap-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">Daftar Rencana Kinerja Bulanan</h3>
-                {(currentUser.role === 'anggota' || currentUser.role === 'ketua_tim') && (
+                <div className="flex items-center gap-2">
                   <button
-                    onClick={() => {
-                      // Pre-fill plans
-                      const cur = users.find(u => u.id === currentUser.id)
-                      if (cur?.annualPlans && cur.annualPlans.length > 0) {
-                        setActPlanId(cur.annualPlans[0].id)
-                      }
-                      setShowActivityModal(true)
-                    }}
-                    className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold shadow transition-all hover:scale-[1.01]"
+                    onClick={exportToExcel}
+                    className="px-4 py-2 bg-emerald-600/25 hover:bg-emerald-600/35 border border-emerald-500/30 text-emerald-400 rounded-lg text-xs font-semibold shadow transition-all hover:scale-[1.01] flex items-center gap-1.5 cursor-pointer"
                   >
-                    Tambah Kegiatan Bulanan
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    Ekspor Excel
                   </button>
-                )}
+                  {(currentUser.role === 'anggota' || currentUser.role === 'ketua_tim') && (
+                    <button
+                      onClick={() => {
+                        // Pre-fill plans
+                        const cur = users.find(u => u.id === currentUser.id)
+                        if (cur?.annualPlans && cur.annualPlans.length > 0) {
+                          setActPlanId(cur.annualPlans[0].id)
+                        }
+                        setShowActivityModal(true)
+                      }}
+                      className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold shadow transition-all hover:scale-[1.01]"
+                    >
+                      Tambah Kegiatan Bulanan
+                    </button>
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 gap-4">
