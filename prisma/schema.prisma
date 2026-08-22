@@ -114,7 +114,7 @@ model Activity {
   status       ActivityStatus   @default(BELUM_DILAKSANAKAN)
   targetVolume Float
   unit         String
-  annualPlanId String
+  annualPlanId String?
   teamId       String?
   projectId    String?
   createdById  String
@@ -126,7 +126,7 @@ model Activity {
   updatedAt    DateTime         @updatedAt
   
   // Relations
-  annualPlan   AnnualPlan       @relation(fields: [annualPlanId], references: [id], onDelete: Cascade)
+  annualPlan   AnnualPlan?      @relation(fields: [annualPlanId], references: [id], onDelete: Cascade)
   team         Team?            @relation(fields: [teamId], references: [id], onDelete: SetNull)
   project      Project?         @relation(fields: [projectId], references: [id], onDelete: SetNull)
   creator      User             @relation("ActivityCreator", fields: [createdById], references: [id], onDelete: Cascade)

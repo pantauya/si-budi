@@ -78,11 +78,20 @@ export default function DashboardPage() {
   const [actMembers, setActMembers] = useState<string[]>([])
   const [actStartDate, setActStartDate] = useState(new Date().toISOString().split('T')[0])
   const [actEndDate, setActEndDate] = useState(new Date().toISOString().split('T')[0])
+  const [isAdditionalPlan, setIsAdditionalPlan] = useState(false)
 
   // UI Theme & Layout States
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [theme, setTheme] = useState<'dark' | 'light'>('light')
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [highlightedActivityId, setHighlightedActivityId] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
 
   // Scroll to highlighted activity
   useEffect(() => {
@@ -136,7 +145,7 @@ export default function DashboardPage() {
   }
 
   // Calendar State
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 6, 1)) // Default to July 2026 for demo SKP 2026
+  const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedCalendarDay, setSelectedCalendarDay] = useState<number | null>(null)
   const [showCalendarDayModal, setShowCalendarDayModal] = useState(false)
 
@@ -247,7 +256,7 @@ export default function DashboardPage() {
           name: actName,
           targetVolume: actTarget,
           unit: actUnit,
-          annualPlanId: actPlanId,
+          annualPlanId: isAdditionalPlan ? null : actPlanId,
           createdById: currentUser.id,
           members: currentUser.role === 'ketua_tim' ? actMembers : [],
           startDate: actStartDate,
@@ -290,6 +299,7 @@ export default function DashboardPage() {
         setActivityUploadFiles([])
         setActStartDate(new Date().toISOString().split('T')[0])
         setActEndDate(new Date().toISOString().split('T')[0])
+        setIsAdditionalPlan(false)
         setShowActivityModal(false)
       } else {
         alert('Gagal membuat kegiatan: ' + data.error)
@@ -447,10 +457,16 @@ export default function DashboardPage() {
           overflow: hidden !important;
         }
         .light-mode .glass {
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(12px);
-          border-color: rgba(203, 213, 225, 0.5) !important;
+          background: rgba(255, 255, 255, 0.85) !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+          border-color: rgba(203, 213, 225, 0.7) !important;
           color: #0f172a !important;
+        }
+        .light-mode .bg-slate-800 {
+          background-color: #f1f5f9 !important;
+          color: #334155 !important;
+          border-color: #cbd5e1 !important;
         }
         .light-mode input, .light-mode select, .light-mode textarea {
           background-color: #ffffff !important;
@@ -514,6 +530,9 @@ export default function DashboardPage() {
         .light-mode .bg-slate-900 {
           background-color: #ffffff !important;
         }
+        .light-mode .bg-slate-950 {
+          background-color: #f8fafc !important;
+        }
         .light-mode .bg-slate-950\\/40 {
           background-color: rgba(226, 232, 240, 0.4) !important;
         }
@@ -522,6 +541,59 @@ export default function DashboardPage() {
         }
         .light-mode .bg-sky-950\\/40 {
           background-color: rgba(14, 165, 233, 0.05) !important;
+        }
+        .light-mode .text-sky-400 {
+          color: #0284c7 !important;
+        }
+        .light-mode .text-sky-300 {
+          color: #0369a1 !important;
+        }
+        .light-mode .bg-sky-500\\/10 {
+          background-color: rgba(14, 165, 233, 0.15) !important;
+        }
+        .light-mode .text-emerald-400 {
+          color: #059669 !important;
+        }
+        .light-mode .bg-emerald-500\\/10 {
+          background-color: rgba(16, 185, 129, 0.15) !important;
+        }
+        .light-mode .text-amber-400 {
+          color: #d97706 !important;
+        }
+        .light-mode .bg-amber-500\\/10 {
+          background-color: rgba(245, 158, 11, 0.15) !important;
+        }
+        .light-mode .text-slate-100 {
+          color: #0f172a !important;
+        }
+        .light-mode .text-slate-500 {
+          color: #475569 !important;
+        }
+        .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
+          color: #0f172a !important;
+        }
+        .light-mode .bg-slate-900\\/60 {
+          background-color: #f1f5f9 !important;
+        }
+        .light-mode .bg-slate-900\\/10 {
+          background-color: rgba(241, 245, 249, 0.2) !important;
+        }
+        .light-mode .bg-slate-800\\/50 {
+          background-color: rgba(241, 245, 249, 0.5) !important;
+        }
+        .light-mode .hover\\:bg-slate-800\\/50:hover {
+          background-color: #f1f5f9 !important;
+          color: #0f172a !important;
+        }
+        .light-mode .hover\\:bg-slate-700:hover {
+          background-color: #e2e8f0 !important;
+          color: #0f172a !important;
+        }
+        .light-mode .border-slate-800\\/80 {
+          border-color: #cbd5e1 !important;
+        }
+        .light-mode .border-slate-800\\/40 {
+          border-color: #cbd5e1 !important;
         }
       `}} />
       
@@ -890,7 +962,7 @@ export default function DashboardPage() {
                           )}
                         </div>
                         <h4 className="text-sm font-semibold text-slate-100">{act.name}</h4>
-                        <p className="text-xs text-slate-400 truncate"><span className="text-slate-500 font-medium">SKP Induk:</span> {act.annualPlan?.title}</p>
+                        <p className="text-xs text-slate-400 truncate"><span className="text-slate-500 font-medium">SKP Induk:</span> {act.annualPlan?.title || 'Rencana Kinerja Tambahan'}</p>
                         <p className="text-xs text-slate-400">Target: <strong className="text-slate-300">{act.targetVolume} {act.unit}</strong></p>
                         {act.startDate && act.endDate ? (
                           <p className="text-xs text-slate-400">Rentang Waktu: <strong className="text-slate-300">{new Date(act.startDate).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})} - {new Date(act.endDate).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})}</strong></p>
@@ -1056,19 +1128,29 @@ export default function DashboardPage() {
                   {Array.from({ length: daysInMonth }).map((_, idx) => {
                     const day = idx + 1
                     const dayDate = new Date(year, month, day)
+                    const formatLocalDateString = (y: number, m: number, d: number) => {
+                      const mm = String(m + 1).padStart(2, '0')
+                      const dd = String(d).padStart(2, '0')
+                      return `${y}-${mm}-${dd}`
+                    }
+
+                    const getLocalDateString = (dateInput: string | Date) => {
+                      const d = new Date(dateInput)
+                      const y = d.getFullYear()
+                      const mm = String(d.getMonth() + 1).padStart(2, '0')
+                      const dd = String(d.getDate()).padStart(2, '0')
+                      return `${y}-${mm}-${dd}`
+                    }
+
+                    const dayStr = formatLocalDateString(year, month, day)
                     const dayActivities = activities.filter(act => {
                       if (act.startDate && act.endDate) {
-                        const start = new Date(act.startDate)
-                        start.setHours(0,0,0,0)
-                        const end = new Date(act.endDate)
-                        end.setHours(23,59,59,999)
-                        const current = new Date(year, month, day, 12, 0, 0, 0)
-                        return current >= start && current <= end
+                        const startStr = getLocalDateString(act.startDate)
+                        const endStr = getLocalDateString(act.endDate)
+                        return dayStr >= startStr && dayStr <= endStr
                       } else {
-                        const actDate = new Date(act.createdAt)
-                        return actDate.getDate() === day &&
-                               actDate.getMonth() === month &&
-                               actDate.getFullYear() === year
+                        const createdStr = getLocalDateString(act.createdAt)
+                        return dayStr === createdStr
                       }
                     })
 
@@ -1188,24 +1270,44 @@ export default function DashboardPage() {
           <form onSubmit={handleCreateActivity} className="w-full max-w-lg glass border border-slate-800 rounded-xl overflow-hidden shadow-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto">
             <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">Tambah Kegiatan Bulanan</h3>
 
-            <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Butir SKP Induk</label>
-              <select
-                required
-                value={actPlanId}
-                onChange={(e) => setActPlanId(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
-              >
-                <option value="">-- Pilih Target SKP --</option>
-                {users.find(u => u.id === currentUser.id)?.annualPlans?.map(p => (
-                  <option key={p.id} value={p.id}>{p.title}</option>
-                ))}
-                {/* Fallback if user has no plans seeded yet but we need to create */}
-                {users.find(u => u.id === currentUser.id)?.annualPlans?.length === 0 && (
-                  <option disabled>Belum ada SKP tahunan. Harap lakukan sinkronisasi.</option>
-                )}
-              </select>
+            <div className="flex items-center gap-2 pb-1">
+              <input
+                id="additionalPlanCheckbox"
+                type="checkbox"
+                checked={isAdditionalPlan}
+                onChange={(e) => {
+                  setIsAdditionalPlan(e.target.checked)
+                  if (e.target.checked) {
+                    setActPlanId("")
+                  }
+                }}
+                className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-sky-500 focus:ring-sky-500 cursor-pointer"
+              />
+              <label htmlFor="additionalPlanCheckbox" className="text-xs font-bold text-slate-300 cursor-pointer select-none">
+                Rencana Kinerja Tambahan (Tanpa SKP Induk)
+              </label>
             </div>
+
+            {!isAdditionalPlan && (
+              <div>
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Butir SKP Induk</label>
+                <select
+                  required={!isAdditionalPlan}
+                  value={actPlanId}
+                  onChange={(e) => setActPlanId(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                >
+                  <option value="">-- Pilih Target SKP --</option>
+                  {users.find(u => u.id === currentUser.id)?.annualPlans?.map(p => (
+                    <option key={p.id} value={p.id}>{p.title}</option>
+                  ))}
+                  {/* Fallback if user has no plans seeded yet but we need to create */}
+                  {users.find(u => u.id === currentUser.id)?.annualPlans?.length === 0 && (
+                    <option disabled>Belum ada SKP tahunan. Harap lakukan sinkronisasi.</option>
+                  )}
+                </select>
+              </div>
+            )}
 
             <div>
               <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Nama / Uraian Kegiatan</label>
@@ -1550,10 +1652,29 @@ export default function DashboardPage() {
             <div className="space-y-3 max-h-96 overflow-y-auto">
               {activities
                 .filter(act => {
-                  const actDate = new Date(act.createdAt)
-                  return actDate.getDate() === selectedCalendarDay &&
-                         actDate.getMonth() === month &&
-                         actDate.getFullYear() === year
+                  const formatLocalDateString = (y: number, m: number, d: number) => {
+                    const mm = String(m + 1).padStart(2, '0')
+                    const dd = String(d).padStart(2, '0')
+                    return `${y}-${mm}-${dd}`
+                  }
+
+                  const getLocalDateString = (dateInput: string | Date) => {
+                    const d = new Date(dateInput)
+                    const y = d.getFullYear()
+                    const mm = String(d.getMonth() + 1).padStart(2, '0')
+                    const dd = String(d.getDate()).padStart(2, '0')
+                    return `${y}-${mm}-${dd}`
+                  }
+
+                  const dayStr = formatLocalDateString(year, month, selectedCalendarDay)
+                  if (act.startDate && act.endDate) {
+                    const startStr = getLocalDateString(act.startDate)
+                    const endStr = getLocalDateString(act.endDate)
+                    return dayStr >= startStr && dayStr <= endStr
+                  } else {
+                    const createdStr = getLocalDateString(act.createdAt)
+                    return dayStr === createdStr
+                  }
                 })
                 .map(act => (
                   <div key={act.id} className="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-1.5">

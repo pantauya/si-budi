@@ -64,7 +64,8 @@ export async function POST(request: Request) {
       where: { id: activityId },
       include: {
         team: true,
-        annualPlan: true
+        annualPlan: true,
+        creator: true
       }
     })
 
@@ -73,6 +74,8 @@ export async function POST(request: Request) {
     }
 
     const teamName = activityObj.team?.name || 'Umum'
+    const employeeName = activityObj.creator?.name || 'Pegawai'
+    const yearStr = activityObj.annualPlan?.year?.toString() || new Date().getFullYear().toString()
     const activityName = activityObj.name
 
     const buffer = Buffer.from(await file.arrayBuffer())
@@ -110,8 +113,9 @@ export async function POST(request: Request) {
         const drive = google.drive({ version: 'v3', auth: oauth2Client })
 
         const rootFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID || undefined
-        const teamFolderId = await getOrCreateFolder(drive, `Tim - ${teamName}`, rootFolderId)
-        const activityFolderId = await getOrCreateFolder(drive, `Kegiatan - ${activityName}`, teamFolderId)
+        const yearFolderId = await getOrCreateFolder(drive, yearStr, rootFolderId)
+        const employeeFolderId = await getOrCreateFolder(drive, employeeName, yearFolderId)
+        const activityFolderId = await getOrCreateFolder(drive, activityName, employeeFolderId)
         driveFolderLink = `https://drive.google.com/drive/folders/${activityFolderId}`
 
         const media = {
@@ -163,8 +167,9 @@ export async function POST(request: Request) {
         const drive = google.drive({ version: 'v3', auth })
 
         const rootFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID || undefined
-        const teamFolderId = await getOrCreateFolder(drive, `Tim - ${teamName}`, rootFolderId)
-        const activityFolderId = await getOrCreateFolder(drive, `Kegiatan - ${activityName}`, teamFolderId)
+        const yearFolderId = await getOrCreateFolder(drive, yearStr, rootFolderId)
+        const employeeFolderId = await getOrCreateFolder(drive, employeeName, yearFolderId)
+        const activityFolderId = await getOrCreateFolder(drive, activityName, employeeFolderId)
         driveFolderLink = `https://drive.google.com/drive/folders/${activityFolderId}`
 
         const media = {

@@ -87,7 +87,7 @@ export async function POST(request: Request) {
         name,
         targetVolume: parseFloat(targetVolume),
         unit,
-        annualPlanId,
+        annualPlanId: annualPlanId || null,
         createdById,
         status: 'SEDANG_BERLANGSUNG',
         startDate: startDate ? new Date(startDate) : null,
