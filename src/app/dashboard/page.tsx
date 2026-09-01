@@ -101,6 +101,7 @@ export default function DashboardPage() {
   // UI Theme & Layout States
   const [theme, setTheme] = useState<'dark' | 'light'>('light')
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [highlightedActivityId, setHighlightedActivityId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -803,23 +804,34 @@ export default function DashboardPage() {
         }
       `}} />
       
+      {/* Mobile Backdrop Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 cursor-pointer"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Sidebar Section */}
-      <aside className={`w-full ${sidebarCollapsed ? 'md:w-20' : 'md:w-64'} md:h-screen md:sticky md:top-0 bg-slate-900 border-r border-slate-800 flex flex-col transition-all duration-300 z-30 flex-shrink-0`}>
+      <aside className={`fixed inset-y-0 left-0 z-50 w-72 md:w-auto ${sidebarCollapsed ? 'md:w-20' : 'md:w-64'} md:static md:h-screen md:sticky md:top-0 bg-slate-900 border-r border-slate-800 flex flex-col transition-all duration-300 flex-shrink-0 ${
+        mobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full md:translate-x-0'
+      }`}>
         {/* Sidebar Header */}
-        <div className={`border-b border-slate-800 transition-all duration-300 ${sidebarCollapsed ? 'p-4 flex flex-col items-center justify-center gap-2.5' : 'p-5 flex items-center justify-between gap-3'}`}>
+        <div className={`border-b border-slate-800 transition-all duration-300 ${sidebarCollapsed ? 'p-4 md:flex md:flex-col md:items-center md:justify-center md:gap-2.5 p-5 flex items-center justify-between gap-3' : 'p-5 flex items-center justify-between gap-3'}`}>
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
               <svg className="w-5 h-5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            {!sidebarCollapsed && (
-              <div className="min-w-0">
-                <span className="text-lg font-extrabold text-white tracking-tight block truncate">SI-BUDI</span>
-                <span className="block text-[9px] text-slate-400 font-semibold tracking-wider uppercase truncate">BPS KAB. SIGI</span>
-              </div>
-            )}
+            <div className={`min-w-0 ${sidebarCollapsed ? 'block md:hidden' : 'block'}`}>
+              <span className="text-lg font-extrabold text-white tracking-tight block truncate">SI-BUDI</span>
+              <span className="block text-[9px] text-slate-400 font-semibold tracking-wider uppercase truncate">BPS KAB. SIGI</span>
+            </div>
           </div>
+
+          {/* Desktop Toggle Button */}
           <button 
             type="button"
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -844,67 +856,98 @@ export default function DashboardPage() {
               </svg>
             )}
           </button>
+
+          {/* Mobile Close Drawer Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`p-1.5 rounded-lg md:hidden cursor-pointer transition-colors ${
+              theme === 'light'
+                ? 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+            }`}
+            title="Tutup Menu"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        <nav className="flex-1 px-4 py-6 space-y-1">
+        <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
           <button
-            onClick={() => setActiveTab('summary')}
-            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'summary' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
+            onClick={() => {
+              setActiveTab('summary')
+              setMobileMenuOpen(false)
+            }}
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-start md:justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'summary' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
             title="Dasbor Utama"
           >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
-            {!sidebarCollapsed && <span>Dasbor Utama</span>}
+            <span className={sidebarCollapsed ? 'inline md:hidden' : 'inline'}>Dasbor Utama</span>
           </button>
           <button
-            onClick={() => setActiveTab('activities')}
-            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'activities' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
+            onClick={() => {
+              setActiveTab('activities')
+              setMobileMenuOpen(false)
+            }}
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-start md:justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'activities' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
             title="Rencana Kinerja & Bukti"
           >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5A3.375 3.375 0 0010.125 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V14.25z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 15h6M9 18h6M9 12h3" />
             </svg>
-            {!sidebarCollapsed && <span>Rencana Kinerja & Bukti</span>}
+            <span className={sidebarCollapsed ? 'inline md:hidden' : 'inline'}>Rencana Kinerja & Bukti</span>
           </button>
 
           {/* Calendar tab - shown to everyone except admin */}
           {currentUser.role !== 'admin' && (
             <button
-              onClick={() => setActiveTab('calendar')}
-              className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'calendar' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
+              onClick={() => {
+                setActiveTab('calendar')
+                setMobileMenuOpen(false)
+              }}
+              className={`w-full flex items-center ${sidebarCollapsed ? 'justify-start md:justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'calendar' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
               title="Kalender Kegiatan"
             >
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
               </svg>
-              {!sidebarCollapsed && <span>Kalender Kegiatan</span>}
+              <span className={sidebarCollapsed ? 'inline md:hidden' : 'inline'}>Kalender Kegiatan</span>
             </button>
           )}
 
           <button
-            onClick={() => setActiveTab('sync')}
-            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'sync' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
+            onClick={() => {
+              setActiveTab('sync')
+              setMobileMenuOpen(false)
+            }}
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-start md:justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'sync' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
             title="Integrasi KipAPP"
           >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
-            {!sidebarCollapsed && <span>Integrasi KipAPP</span>}
+            <span className={sidebarCollapsed ? 'inline md:hidden' : 'inline'}>Integrasi KipAPP</span>
           </button>
 
           {/* Audit Log tab - shown only to admin role */}
           {currentUser.role === 'admin' && (
             <button
-              onClick={() => setActiveTab('audit')}
-              className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'audit' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
+              onClick={() => {
+                setActiveTab('audit')
+                setMobileMenuOpen(false)
+              }}
+              className={`w-full flex items-center ${sidebarCollapsed ? 'justify-start md:justify-center' : 'justify-start'} gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'audit' ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'}`}
               title="Audit Log Sistem"
             >
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              {!sidebarCollapsed && <span>Audit Log Sistem</span>}
+              <span className={sidebarCollapsed ? 'inline md:hidden' : 'inline'}>Audit Log Sistem</span>
             </button>
           )}
         </nav>
@@ -912,14 +955,14 @@ export default function DashboardPage() {
         {/* User profile footer */}
         <div className={`border-t border-slate-800 bg-slate-900/40 transition-all ${
           sidebarCollapsed 
-            ? 'p-3 flex flex-col items-center justify-center gap-2.5' 
+            ? 'p-3 md:flex md:flex-col md:items-center md:justify-center md:gap-2.5 p-4 flex items-center justify-between flex-wrap gap-2' 
             : 'p-4 flex items-center justify-between flex-wrap gap-2'
         }`}>
-          {/* When sidebar is collapsed, place logout button ABOVE avatar icon */}
+          {/* Desktop-only: When sidebar is collapsed on desktop, place logout button ABOVE avatar icon */}
           {sidebarCollapsed && (
             <button
               onClick={handleLogout}
-              className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
+              className={`hidden md:flex w-8 h-8 rounded-lg items-center justify-center transition-all cursor-pointer ${
                 theme === 'light'
                   ? 'bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 shadow-sm'
                   : 'bg-slate-800/80 hover:bg-rose-950/60 text-slate-400 hover:text-rose-400 border border-slate-700/60 shadow-sm'
@@ -941,9 +984,10 @@ export default function DashboardPage() {
               setOldPassword('')
               setNewPassword('')
               setConfirmPassword('')
+              setMobileMenuOpen(false)
             }}
             className={`flex items-center gap-3 min-w-0 text-left hover:opacity-85 transition-opacity cursor-pointer group ${
-              sidebarCollapsed ? 'justify-center' : 'flex-1'
+              sidebarCollapsed ? 'justify-start md:justify-center flex-1 md:flex-none' : 'flex-1'
             }`}
             title="Klik untuk melihat Profil & Ubah Password"
           >
@@ -954,43 +998,58 @@ export default function DashboardPage() {
             }`}>
               {currentUser.name[0]}
             </div>
-            {!sidebarCollapsed && (
-              <div className="min-w-0">
-                <p className="text-xs font-bold text-slate-200 truncate group-hover:text-sky-300 transition-colors">{currentUser.name}</p>
-                <p className="text-[10px] text-slate-400 uppercase tracking-wider">{currentUser.role.replace('_', ' ')}</p>
-              </div>
-            )}
+            <div className={`min-w-0 ${sidebarCollapsed ? 'block md:hidden' : 'block'}`}>
+              <p className="text-xs font-bold text-slate-200 truncate group-hover:text-sky-300 transition-colors">{currentUser.name}</p>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider">{currentUser.role.replace('_', ' ')}</p>
+            </div>
           </button>
 
-          {/* When sidebar is expanded, place logout button on the right */}
-          {!sidebarCollapsed && (
-            <button 
-              onClick={handleLogout} 
-              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
-                theme === 'light'
-                  ? 'text-slate-400 hover:text-rose-600 hover:bg-rose-50'
-                  : 'text-slate-400 hover:text-rose-400 hover:bg-slate-800'
-              }`} 
-              title="Keluar / Logout"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-              </svg>
-            </button>
-          )}
+          {/* Logout button (shown when expanded on desktop, and ALWAYS on mobile) */}
+          <button 
+            onClick={handleLogout} 
+            className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+              sidebarCollapsed ? 'flex md:hidden' : 'flex'
+            } ${
+              theme === 'light'
+                ? 'text-slate-400 hover:text-rose-600 hover:bg-rose-50'
+                : 'text-slate-400 hover:text-rose-400 hover:bg-slate-800'
+            }`} 
+            title="Keluar / Logout"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        <header className="px-8 py-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/10 backdrop-blur-md sticky top-0 z-20 transition-all duration-300">
-          <h2 className="text-lg font-semibold text-white uppercase tracking-wider">
-            {activeTab === 'summary' && 'Ringkasan Kinerja'}
-            {activeTab === 'activities' && 'Rencana Kinerja Bulanan'}
-            {activeTab === 'calendar' && 'Kalender Rencana Kegiatan'}
-            {activeTab === 'sync' && 'Sinkronisasi KipAPP BPS'}
-            {activeTab === 'audit' && 'Jejak Audit Aktivitas'}
-          </h2>
+        <header className="px-4 sm:px-8 py-4 sm:py-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/10 backdrop-blur-md sticky top-0 z-20 transition-all duration-300 gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            {/* Mobile Hamburger Menu Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className={`p-2 rounded-lg border transition-all md:hidden cursor-pointer flex-shrink-0 ${
+                theme === 'light'
+                  ? 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100 shadow-sm'
+                  : 'bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800'
+              }`}
+              title="Buka Menu Navigasi"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+            <h2 className="text-sm sm:text-lg font-semibold text-white uppercase tracking-wider truncate">
+              {activeTab === 'summary' && 'Ringkasan Kinerja'}
+              {activeTab === 'activities' && 'Rencana Kinerja Bulanan'}
+              {activeTab === 'calendar' && 'Kalender Rencana Kegiatan'}
+              {activeTab === 'sync' && 'Sinkronisasi KipAPP BPS'}
+              {activeTab === 'audit' && 'Jejak Audit Aktivitas'}
+            </h2>
+          </div>
           <div className="flex items-center gap-3">
             <button
               onClick={() => {
