@@ -86,6 +86,17 @@ export default function DashboardPage() {
   const [searchRec, setSearchRec] = useState('')
   const [recBidangFilter, setRecBidangFilter] = useState('Semua')
 
+  // Profile & Change Password states
+  const [showProfileModal, setShowProfileModal] = useState(false)
+  const [oldPassword, setOldPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showOldPass, setShowOldPass] = useState(false)
+  const [showNewPass, setShowNewPass] = useState(false)
+  const [showConfirmPass, setShowConfirmPass] = useState(false)
+  const [changePassLoading, setChangePassLoading] = useState(false)
+  const [changePassMsg, setChangePassMsg] = useState<{ type: 'success' | 'error', text: string } | null>(null)
+
 
   // UI Theme & Layout States
   const [theme, setTheme] = useState<'dark' | 'light'>('light')
@@ -345,6 +356,50 @@ export default function DashboardPage() {
       console.error(err)
     } finally {
       setUploading(false)
+    }
+  }
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!currentUser) return
+
+    setChangePassMsg(null)
+
+    if (newPassword.length < 6) {
+      setChangePassMsg({ type: 'error', text: 'Password baru minimal harus 6 karakter.' })
+      return
+    }
+
+    if (newPassword !== confirmPassword) {
+      setChangePassMsg({ type: 'error', text: 'Konfirmasi password baru tidak cocok.' })
+      return
+    }
+
+    setChangePassLoading(true)
+    try {
+      const res = await fetch('/api/auth/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          oldPassword,
+          newPassword
+        })
+      })
+      const data = await res.json()
+
+      if (data.success) {
+        setChangePassMsg({ type: 'success', text: 'Password berhasil diperbarui! Silakan gunakan password baru pada login berikutnya.' })
+        setOldPassword('')
+        setNewPassword('')
+        setConfirmPassword('')
+      } else {
+        setChangePassMsg({ type: 'error', text: data.error || 'Gagal mengubah password.' })
+      }
+    } catch (err: any) {
+      setChangePassMsg({ type: 'error', text: err.message || 'Terjadi kesalahan jaringan.' })
+    } finally {
+      setChangePassLoading(false)
     }
   }
 
@@ -699,22 +754,40 @@ export default function DashboardPage() {
         .light-mode .text-slate-100 {
           color: #0f172a !important;
         }
-        .light-mode .text-slate-500 {
+        .light-mode .text-slate-200 {
+          color: #1e293b !important;
+        }
+        .light-mode .text-slate-300 {
+          color: #334155 !important;
+        }
+        .light-mode .text-slate-400 {
           color: #475569 !important;
+        }
+        .light-mode .text-slate-500 {
+          color: #64748b !important;
         }
         .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
           color: #0f172a !important;
         }
+        .light-mode .bg-slate-900\\/80 {
+          background-color: #f8fafc !important;
+        }
         .light-mode .bg-slate-900\\/60 {
           background-color: #f1f5f9 !important;
+        }
+        .light-mode .bg-slate-900\\/40 {
+          background-color: rgba(241, 245, 249, 0.6) !important;
         }
         .light-mode .bg-slate-900\\/10 {
           background-color: rgba(241, 245, 249, 0.2) !important;
         }
+        .light-mode .bg-slate-800\\/80, .light-mode .bg-slate-800\\/90, .light-mode .bg-slate-800\\/60 {
+          background-color: #f1f5f9 !important;
+        }
         .light-mode .bg-slate-800\\/50 {
           background-color: rgba(241, 245, 249, 0.5) !important;
         }
-        .light-mode .hover\\:bg-slate-800\\/50:hover {
+        .light-mode .hover\\:bg-slate-800\\/50:hover, .light-mode .hover\\:bg-slate-800\\/60:hover {
           background-color: #f1f5f9 !important;
           color: #0f172a !important;
         }
@@ -732,30 +805,41 @@ export default function DashboardPage() {
       
       {/* Sidebar Section */}
       <aside className={`w-full ${sidebarCollapsed ? 'md:w-20' : 'md:w-64'} md:h-screen md:sticky md:top-0 bg-slate-900 border-r border-slate-800 flex flex-col transition-all duration-300 z-30 flex-shrink-0`}>
-        <div className={`p-6 border-b border-slate-800 flex items-center ${sidebarCollapsed ? 'justify-center px-4' : 'justify-between'} gap-3`}>
+        {/* Sidebar Header */}
+        <div className={`border-b border-slate-800 transition-all duration-300 ${sidebarCollapsed ? 'p-4 flex flex-col items-center justify-center gap-2.5' : 'p-5 flex items-center justify-between gap-3'}`}>
           <div className="flex items-center gap-3 min-w-0">
-            <svg className="w-7 h-7 text-sky-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
+            <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
+              <svg className="w-5 h-5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </div>
             {!sidebarCollapsed && (
               <div className="min-w-0">
-                <span className="text-xl font-extrabold text-white tracking-tight block truncate">SI-BUDI</span>
-                <span className="block text-[10px] text-slate-400 font-medium tracking-wide truncate">BPS KAB. SIGI</span>
+                <span className="text-lg font-extrabold text-white tracking-tight block truncate">SI-BUDI</span>
+                <span className="block text-[9px] text-slate-400 font-semibold tracking-wider uppercase truncate">BPS KAB. SIGI</span>
               </div>
             )}
           </div>
           <button 
             type="button"
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800 transition-colors hidden md:block cursor-pointer"
+            className={`rounded-lg transition-all hidden md:flex items-center justify-center cursor-pointer ${
+              sidebarCollapsed 
+                ? (theme === 'light' 
+                    ? 'w-8 h-8 bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-600 border border-slate-300 shadow-sm' 
+                    : 'w-7 h-7 bg-slate-800/90 hover:bg-sky-500/20 text-slate-200 hover:text-sky-400 border border-slate-700/80 shadow-sm')
+                : (theme === 'light' 
+                    ? 'p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-sky-600 border border-slate-300' 
+                    : 'p-1.5 bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-sky-400 border border-slate-700/60')
+            }`}
             title={sidebarCollapsed ? "Buka Sidebar" : "Tutup Sidebar"}
           >
             {sidebarCollapsed ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
               </svg>
             ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
               </svg>
             )}
@@ -810,7 +894,7 @@ export default function DashboardPage() {
             {!sidebarCollapsed && <span>Integrasi KipAPP</span>}
           </button>
 
-          {/* System logs tab - restricted to admin only */}
+          {/* Audit Log tab - shown only to admin role */}
           {currentUser.role === 'admin' && (
             <button
               onClick={() => setActiveTab('audit')}
@@ -826,23 +910,74 @@ export default function DashboardPage() {
         </nav>
 
         {/* User profile footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-900/40 flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-sky-400 uppercase flex-shrink-0">
+        <div className={`border-t border-slate-800 bg-slate-900/40 transition-all ${
+          sidebarCollapsed 
+            ? 'p-3 flex flex-col items-center justify-center gap-2.5' 
+            : 'p-4 flex items-center justify-between flex-wrap gap-2'
+        }`}>
+          {/* When sidebar is collapsed, place logout button ABOVE avatar icon */}
+          {sidebarCollapsed && (
+            <button
+              onClick={handleLogout}
+              className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
+                theme === 'light'
+                  ? 'bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 shadow-sm'
+                  : 'bg-slate-800/80 hover:bg-rose-950/60 text-slate-400 hover:text-rose-400 border border-slate-700/60 shadow-sm'
+              }`}
+              title="Keluar / Logout"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+            </button>
+          )}
+
+          {/* Profile Avatar / Name button */}
+          <button
+            type="button"
+            onClick={() => {
+              setShowProfileModal(true)
+              setChangePassMsg(null)
+              setOldPassword('')
+              setNewPassword('')
+              setConfirmPassword('')
+            }}
+            className={`flex items-center gap-3 min-w-0 text-left hover:opacity-85 transition-opacity cursor-pointer group ${
+              sidebarCollapsed ? 'justify-center' : 'flex-1'
+            }`}
+            title="Klik untuk melihat Profil & Ubah Password"
+          >
+            <div className={`w-9 h-9 rounded-full border flex items-center justify-center text-sm font-bold uppercase flex-shrink-0 transition-colors ${
+              theme === 'light'
+                ? 'bg-sky-100 border-sky-300 text-sky-700 group-hover:border-sky-500'
+                : 'bg-slate-800 border-slate-700 text-sky-400 group-hover:border-sky-500'
+            }`}>
               {currentUser.name[0]}
             </div>
             {!sidebarCollapsed && (
               <div className="min-w-0">
-                <p className="text-xs font-bold text-slate-200 truncate">{currentUser.name}</p>
+                <p className="text-xs font-bold text-slate-200 truncate group-hover:text-sky-300 transition-colors">{currentUser.name}</p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider">{currentUser.role.replace('_', ' ')}</p>
               </div>
             )}
-          </div>
-          <button onClick={handleLogout} className="p-1.5 text-slate-400 hover:text-rose-400 transition-colors mx-auto md:mx-0 cursor-pointer" title="Keluar">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
           </button>
+
+          {/* When sidebar is expanded, place logout button on the right */}
+          {!sidebarCollapsed && (
+            <button 
+              onClick={handleLogout} 
+              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                theme === 'light'
+                  ? 'text-slate-400 hover:text-rose-600 hover:bg-rose-50'
+                  : 'text-slate-400 hover:text-rose-400 hover:bg-slate-800'
+              }`} 
+              title="Keluar / Logout"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+            </button>
+          )}
         </div>
       </aside>
 
@@ -857,6 +992,25 @@ export default function DashboardPage() {
             {activeTab === 'audit' && 'Jejak Audit Aktivitas'}
           </h2>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => {
+                setShowProfileModal(true)
+                setChangePassMsg(null)
+                setOldPassword('')
+                setNewPassword('')
+                setConfirmPassword('')
+              }}
+              className={`flex items-center gap-2 text-xs px-3 py-1.5 rounded-full border transition-all cursor-pointer ${theme === 'light' ? 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100' : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'}`}
+              title="Profil & Ubah Password"
+            >
+              <div className="w-4 h-4 rounded-full bg-sky-500/20 text-sky-400 font-bold flex items-center justify-center text-[9px]">
+                {currentUser.name[0]}
+              </div>
+              <span className="font-medium hidden sm:inline">{currentUser.name.split(' ')[0]}</span>
+              <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </button>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className={`p-2 rounded-full border transition-all cursor-pointer ${theme === 'light' ? 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100' : 'bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800'}`}
@@ -2013,6 +2167,270 @@ export default function DashboardPage() {
                     <p className="text-[10px] text-slate-400">Pegawai: {act.creator.name}</p>
                   </div>
                 ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: PROFIL & UBAH PASSWORD */}
+      {showProfileModal && currentUser && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className={`w-full max-w-md rounded-2xl overflow-hidden shadow-2xl transition-all border ${
+            theme === 'light'
+              ? 'bg-white border-slate-200 text-slate-900 shadow-xl'
+              : 'glass border-slate-800 text-slate-100'
+          }`}>
+            {/* Header */}
+            <div className={`px-6 py-4 border-b flex justify-between items-center ${
+              theme === 'light' ? 'bg-slate-50/80 border-slate-200' : 'bg-slate-900/40 border-slate-800'
+            }`}>
+              <div className="flex items-center gap-2.5">
+                <div className={`p-2 rounded-lg border ${
+                  theme === 'light'
+                    ? 'bg-sky-50 border-sky-200 text-sky-600'
+                    : 'bg-sky-500/10 border-sky-500/20 text-sky-400'
+                }`}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className={`text-sm font-bold ${theme === 'light' ? 'text-slate-900' : 'text-slate-100'}`}>Profil & Pengaturan Akun</h3>
+                  <p className={`text-[11px] ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>Informasi pegawai dan ubah password</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowProfileModal(false)
+                  setChangePassMsg(null)
+                }}
+                className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                  theme === 'light' ? 'text-slate-400 hover:text-slate-700 hover:bg-slate-100' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
+              {/* Profile Card Summary */}
+              <div className={`p-4 rounded-xl flex items-center gap-4 border ${
+                theme === 'light' ? 'bg-slate-50 border-slate-200 shadow-sm' : 'bg-slate-900/80 border-slate-800'
+              }`}>
+                <div className="w-13 h-13 rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-xl font-bold text-white shadow-lg shadow-sky-500/20 shrink-0">
+                  {currentUser.name[0]}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className={`text-sm font-bold truncate ${theme === 'light' ? 'text-slate-900' : 'text-slate-100'}`}>{currentUser.name}</h4>
+                  <p className={`text-xs font-mono mt-0.5 ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>NIP: {currentUser.nip}</p>
+                  <div className="flex items-center gap-2 mt-2 flex-wrap">
+                    <span className={`text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${
+                      theme === 'light'
+                        ? 'bg-sky-50 text-sky-700 border-sky-200'
+                        : 'bg-sky-500/10 text-sky-400 border-sky-500/20'
+                    }`}>
+                      {currentUser.role.replace('_', ' ')}
+                    </span>
+                    <span className={`text-[10px] ${theme === 'light' ? 'text-slate-500 font-medium' : 'text-slate-400'}`}>
+                      @{currentUser.username}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Password Change Form */}
+              <form onSubmit={handleChangePassword} className="space-y-4">
+                <div className={`flex items-center justify-between border-b pb-2 ${
+                  theme === 'light' ? 'border-slate-200' : 'border-slate-800/80'
+                }`}>
+                  <h4 className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${
+                    theme === 'light' ? 'text-slate-800' : 'text-slate-300'
+                  }`}>
+                    <svg className="w-3.5 h-3.5 text-sky-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                    Ubah Password Akun
+                  </h4>
+                </div>
+
+                {changePassMsg && (
+                  <div
+                    className={`p-3 rounded-lg text-xs flex items-start gap-2 ${
+                      changePassMsg.type === 'success'
+                        ? (theme === 'light' ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' : 'bg-emerald-950/40 border border-emerald-800/60 text-emerald-300')
+                        : (theme === 'light' ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-rose-950/40 border border-rose-800/60 text-rose-300')
+                    }`}
+                  >
+                    <span>{changePassMsg.type === 'success' ? '✅' : '⚠️'}</span>
+                    <p className="leading-relaxed">{changePassMsg.text}</p>
+                  </div>
+                )}
+
+                {/* Password Lama */}
+                <div>
+                  <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${
+                    theme === 'light' ? 'text-slate-700' : 'text-slate-400'
+                  }`}>
+                    Password Saat Ini (Lama) <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      required
+                      type={showOldPass ? 'text' : 'password'}
+                      value={oldPassword}
+                      onChange={(e) => setOldPassword(e.target.value)}
+                      placeholder="Masukkan password saat ini..."
+                      className={`w-full px-3 py-2 pr-10 rounded-lg text-xs transition-all focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
+                        theme === 'light'
+                          ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-sky-500'
+                          : 'bg-slate-900 border border-slate-850 text-slate-100 placeholder-slate-500 focus:border-sky-500'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowOldPass(!showOldPass)}
+                      className={`absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded cursor-pointer transition-colors ${
+                        theme === 'light' ? 'text-slate-400 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                      title={showOldPass ? "Sembunyikan password" : "Lihat password"}
+                    >
+                      {showOldPass ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Password Baru */}
+                <div>
+                  <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${
+                    theme === 'light' ? 'text-slate-700' : 'text-slate-400'
+                  }`}>
+                    Password Baru <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      required
+                      type={showNewPass ? 'text' : 'password'}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      placeholder="Minimal 6 karakter..."
+                      minLength={6}
+                      className={`w-full px-3 py-2 pr-10 rounded-lg text-xs transition-all focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
+                        theme === 'light'
+                          ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-sky-500'
+                          : 'bg-slate-900 border border-slate-850 text-slate-100 placeholder-slate-500 focus:border-sky-500'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowNewPass(!showNewPass)}
+                      className={`absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded cursor-pointer transition-colors ${
+                        theme === 'light' ? 'text-slate-400 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                      title={showNewPass ? "Sembunyikan password" : "Lihat password"}
+                    >
+                      {showNewPass ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Konfirmasi Password Baru */}
+                <div>
+                  <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${
+                    theme === 'light' ? 'text-slate-700' : 'text-slate-400'
+                  }`}>
+                    Konfirmasi Password Baru <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      required
+                      type={showConfirmPass ? 'text' : 'password'}
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Ketik ulang password baru..."
+                      minLength={6}
+                      className={`w-full px-3 py-2 pr-10 rounded-lg text-xs transition-all focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
+                        theme === 'light'
+                          ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-sky-500'
+                          : 'bg-slate-900 border border-slate-850 text-slate-100 placeholder-slate-500 focus:border-sky-500'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                      className={`absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded cursor-pointer transition-colors ${
+                        theme === 'light' ? 'text-slate-400 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                      title={showConfirmPass ? "Sembunyikan password" : "Lihat password"}
+                    >
+                      {showConfirmPass ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowProfileModal(false)
+                      setChangePassMsg(null)
+                    }}
+                    className={`px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer transition-colors ${
+                      theme === 'light'
+                        ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300'
+                        : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
+                    }`}
+                  >
+                    Tutup
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={changePassLoading}
+                    className="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-white rounded-lg text-xs font-semibold shadow-md shadow-sky-500/20 disabled:opacity-50 cursor-pointer transition-colors flex items-center gap-2"
+                  >
+                    {changePassLoading ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-1 h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Menyimpan...
+                      </>
+                    ) : (
+                      'Simpan Password Baru'
+                    )}
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

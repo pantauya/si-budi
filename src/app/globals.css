@@ -53,3 +53,19 @@ body {
   transform: translateY(-1px);
   box-shadow: 0 4px 20px -2px rgba(56, 189, 248, 0.2);
 }
+
+/* Disable native browser password reveal and clear buttons in Edge, Chrome, IE */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
