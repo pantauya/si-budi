@@ -17,6 +17,7 @@ export async function GET() {
     const kipData = JSON.parse(fs.readFileSync(filePathData, 'utf8'))
 
     // 2. Clean existing records
+    await prisma.activityRecommendation.deleteMany()
     await prisma.activityLog.deleteMany()
     await prisma.assessment.deleteMany()
     await prisma.activityEvidence.deleteMany()
@@ -353,6 +354,35 @@ export async function GET() {
       }
     }
 
+    // 8. Seed Activity Recommendations from recommendations.json
+    const recsPath = path.join(process.cwd(), 'public', 'recommendations.json')
+    let recsCount = 0
+    if (fs.existsSync(recsPath)) {
+      const recsJson = JSON.parse(fs.readFileSync(recsPath, 'utf8'))
+      if (Array.isArray(recsJson) && recsJson.length > 0) {
+        const batchSize = 100
+        for (let i = 0; i < recsJson.length; i += batchSize) {
+          const chunk = recsJson.slice(i, i + batchSize).map((item: any) => ({
+            bidang: item.bidang || 'Umum',
+            ro: item.ro || null,
+            aktivitas: item.aktivitas || null,
+            rincian: item.rincian || '',
+            outputRincian: item.outputRincian || null,
+            satuan: item.satuan || 'Kegiatan',
+            usageCount: 1
+          })).filter((item: any) => item.rincian.trim() !== '')
+
+          if (chunk.length > 0) {
+            await prisma.activityRecommendation.createMany({
+              data: chunk,
+              skipDuplicates: true
+            })
+            recsCount += chunk.length
+          }
+        }
+      }
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Database SI-BUDI successfully repaired and synchronized with KipAPP source data!',
@@ -360,7 +390,8 @@ export async function GET() {
         usersCreated: userMap.size,
         teamsCreated: dbTeams.size,
         rkCreated: dbPlans.size,
-        projectsCreated: projectsToCreate.length
+        projectsCreated: projectsToCreate.length,
+        recommendationsCreated: recsCount
       }
     })
 

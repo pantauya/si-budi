@@ -81,7 +81,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, targetVolume, unit, annualPlanId, createdById, members, evidenceLink, createdAt, startDate, endDate } = body
+    const { name, targetVolume, unit, output, annualPlanId, createdById, members, evidenceLink, createdAt, startDate, endDate, bidang, ro, aktivitas } = body
 
     // 1. Create activity
     const activity = await prisma.activity.create({
@@ -89,6 +89,7 @@ export async function POST(request: Request) {
         name,
         targetVolume: parseFloat(targetVolume),
         unit,
+        output: output ? output.trim() : null,
         annualPlanId: annualPlanId || null,
         createdById,
         status: 'SEDANG_BERLANGSUNG',
@@ -143,7 +144,62 @@ export async function POST(request: Request) {
       })
     }
 
-    // 5. Log activity
+    // 5. Auto-save or update recommendation in database for team consistency
+    if (name && unit) {
+      try {
+        const trimmedRincian = name.trim()
+        const trimmedSatuan = unit.trim()
+        const trimmedOutput = output ? output.trim() : null
+
+        let inferredBidang = bidang || null
+        if (!inferredBidang && createdById) {
+          const userWithTeam = await prisma.user.findUnique({
+            where: { id: createdById },
+            include: { teamMemberships: { include: { team: true } } }
+          })
+          if (userWithTeam?.teamMemberships?.[0]?.team?.name) {
+            inferredBidang = userWithTeam.teamMemberships[0].team.name
+          }
+        }
+
+        const existingRec = await prisma.activityRecommendation.findFirst({
+          where: {
+            rincian: { equals: trimmedRincian, mode: 'insensitive' }
+          }
+        })
+
+        if (existingRec) {
+          await prisma.activityRecommendation.update({
+            where: { id: existingRec.id },
+            data: {
+              satuan: trimmedSatuan,
+              outputRincian: trimmedOutput || existingRec.outputRincian,
+              bidang: inferredBidang || existingRec.bidang,
+              ro: ro || existingRec.ro,
+              aktivitas: aktivitas || existingRec.aktivitas,
+              usageCount: { increment: 1 }
+            }
+          })
+        } else {
+          await prisma.activityRecommendation.create({
+            data: {
+              rincian: trimmedRincian,
+              satuan: trimmedSatuan,
+              outputRincian: trimmedOutput,
+              bidang: inferredBidang || 'Umum',
+              ro: ro || null,
+              aktivitas: aktivitas || null,
+              usageCount: 1,
+              createdById: createdById || null
+            }
+          })
+        }
+      } catch (recErr) {
+        console.error('Error auto-saving activity recommendation:', recErr)
+      }
+    }
+
+    // 6. Log activity
     await prisma.activityLog.create({
       data: {
         userId: createdById,

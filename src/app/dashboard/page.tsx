@@ -76,6 +76,7 @@ export default function DashboardPage() {
   const [actName, setActName] = useState('')
   const [actTarget, setActTarget] = useState('1')
   const [actUnit, setActUnit] = useState('')
+  const [actOutput, setActOutput] = useState('')
   const [actPlanId, setActPlanId] = useState('')
   const [actMembers, setActMembers] = useState<string[]>([])
   const [actStartDate, setActStartDate] = useState(new Date().toISOString().split('T')[0])
@@ -83,6 +84,7 @@ export default function DashboardPage() {
   const [isAdditionalPlan, setIsAdditionalPlan] = useState(false)
   const [recommendations, setRecommendations] = useState<any[]>([])
   const [searchRec, setSearchRec] = useState('')
+  const [recBidangFilter, setRecBidangFilter] = useState('Semua')
 
 
   // UI Theme & Layout States
@@ -198,10 +200,22 @@ export default function DashboardPage() {
           if (logsData.success) setLogs(logsData.logs)
         }
 
-        // Fetch sheet 7210 recommendations
-        const recsRes = await fetch('/recommendations.json')
-        const recsData = await recsRes.json()
-        setRecommendations(recsData)
+        // Fetch activity recommendations from database API
+        try {
+          const recsRes = await fetch('/api/recommendations', { cache: 'no-store' })
+          const recsData = await recsRes.json()
+          if (recsData.success && Array.isArray(recsData.recommendations)) {
+            setRecommendations(recsData.recommendations)
+          } else {
+            const fallbackRes = await fetch('/recommendations.json')
+            const fallbackData = await fallbackRes.json()
+            setRecommendations(fallbackData)
+          }
+        } catch {
+          const fallbackRes = await fetch('/recommendations.json')
+          const fallbackData = await fallbackRes.json()
+          setRecommendations(fallbackData)
+        }
       } catch (err) {
         console.error(err)
       } finally {
@@ -266,6 +280,7 @@ export default function DashboardPage() {
           name: actName,
           targetVolume: actTarget,
           unit: actUnit,
+          output: actOutput,
           annualPlanId: isAdditionalPlan ? null : actPlanId,
           createdById: currentUser.id,
           members: currentUser.role === 'ketua_tim' ? actMembers : [],
@@ -295,15 +310,27 @@ export default function DashboardPage() {
           await Promise.all(uploadPromises)
         }
 
-        // Refresh list
+        // Refresh activities list
         const listRes = await fetch(`/api/activities?userId=${currentUser.id}&role=${currentUser.role}`, { cache: 'no-store' })
         const listData = await listRes.json()
         if (listData.success) setActivities(listData.activities)
+
+        // Refresh recommendations from database
+        try {
+          const recsRes = await fetch('/api/recommendations', { cache: 'no-store' })
+          const recsData = await recsRes.json()
+          if (recsData.success && Array.isArray(recsData.recommendations)) {
+            setRecommendations(recsData.recommendations)
+          }
+        } catch (e) {
+          console.error('Error refreshing recommendations:', e)
+        }
 
         // Reset forms
         setActName('')
         setActTarget('1')
         setActUnit('')
+        setActOutput('')
         setActPlanId('')
         setActMembers([])
         setActivityUploadFiles([])
@@ -486,6 +513,15 @@ export default function DashboardPage() {
   }).length
   const estimatedTukinCut = overdueCount * 0.05
 
+  // Find activities that need reminders (warningActivities)
+  const warningActivities = activities.filter(a => {
+    const hasNoEvidence = !a.evidences || a.evidences.length === 0
+    const isUncompleted = a.status !== 'DINILAI' && a.status !== 'LENGKAP'
+    const ageInMs = Date.now() - new Date(a.createdAt).getTime()
+    const ageInDays = ageInMs / (1000 * 60 * 60 * 24)
+    return isUncompleted && hasNoEvidence && ageInDays >= 3
+  })
+
   // Calendar logic helpers
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
@@ -525,14 +561,22 @@ export default function DashboardPage() {
     return { total, completed, avg, cut }
   }
 
-  // Filter recommendations based on search input
-  const filteredRecs = searchRec.trim()
-    ? recommendations.filter(rec =>
-        (rec.rincian && rec.rincian.toLowerCase().includes(searchRec.toLowerCase())) ||
-        (rec.ro && rec.ro.toLowerCase().includes(searchRec.toLowerCase())) ||
-        (rec.bidang && rec.bidang.toLowerCase().includes(searchRec.toLowerCase())) ||
-        (rec.aktivitas && rec.aktivitas.toLowerCase().includes(searchRec.toLowerCase()))
-      ).slice(0, 10)
+  // Filter recommendations based on search input & category filter
+  const availableBidangs = ['Semua', ...Array.from(new Set(recommendations.map(r => r.bidang).filter(Boolean)))]
+
+  const filteredRecs = (searchRec.trim() || recBidangFilter !== 'Semua')
+    ? recommendations.filter(rec => {
+        const matchBidang = recBidangFilter === 'Semua' || (rec.bidang && rec.bidang.toLowerCase() === recBidangFilter.toLowerCase())
+        if (!searchRec.trim()) return matchBidang
+        const q = searchRec.toLowerCase()
+        const matchSearch = (rec.rincian && rec.rincian.toLowerCase().includes(q)) ||
+          (rec.ro && rec.ro.toLowerCase().includes(q)) ||
+          (rec.bidang && rec.bidang.toLowerCase().includes(q)) ||
+          (rec.aktivitas && rec.aktivitas.toLowerCase().includes(q)) ||
+          (rec.outputRincian && rec.outputRincian.toLowerCase().includes(q)) ||
+          (rec.satuan && rec.satuan.toLowerCase().includes(q))
+        return matchBidang && matchSearch
+      }).slice(0, 15)
     : []
 
   return (
@@ -875,6 +919,65 @@ export default function DashboardPage() {
                     <span className={`text-xl font-bold mt-1 ${estimatedTukinCut > 0 ? 'text-rose-500' : 'text-emerald-500'}`}>
                       {estimatedTukinCut > 0 ? `-${estimatedTukinCut.toFixed(2)}% (${overdueCount} Kegiatan Lewat H+5)` : '0% (Lengkap & Tepat Waktu)'}
                     </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Reminder Section */}
+              {currentUser.role !== 'admin' && warningActivities.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-slate-350 flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    Peringatan Batas Waktu Bukti Dukung ({warningActivities.length})
+                  </h3>
+                  <div className="grid grid-cols-1 gap-3">
+                    {warningActivities.map(act => {
+                      const ageInMs = Date.now() - new Date(act.createdAt).getTime()
+                      const ageInDays = Math.floor(ageInMs / (1000 * 60 * 60 * 24))
+                      const isOverdue = ageInDays >= 5
+                      
+                      return (
+                        <div 
+                          key={act.id} 
+                          className={`p-5 rounded-xl border-2 flex justify-between items-center gap-4 transition-all duration-300 ${
+                            isOverdue 
+                              ? theme === 'light'
+                                ? 'bg-rose-50 border-rose-300 text-rose-900 shadow-sm'
+                                : 'bg-rose-500/20 border-rose-500 text-rose-100' 
+                              : theme === 'light'
+                                ? 'bg-amber-50 border-amber-300 text-amber-900 shadow-sm'
+                                : 'bg-amber-500/20 border-amber-500 text-amber-100'
+                          }`}
+                        >
+                          <div className="text-sm">
+                            <span className={`font-extrabold block uppercase text-xs tracking-wider mb-1 ${
+                              isOverdue 
+                                ? theme === 'light' ? 'text-rose-700' : 'text-rose-400' 
+                                : theme === 'light' ? 'text-amber-700' : 'text-amber-400'
+                            }`}>
+                              {isOverdue ? '⚠️ Terlambat (H+' + ageInDays + ')' : '⏳ Mendekati Batas (H+' + ageInDays + ')'}
+                            </span>
+                            Kegiatan <strong className={`font-bold ${theme === 'light' ? 'text-slate-950' : 'text-white'}`}>"{act.name}"</strong> belum memiliki bukti dukung. 
+                            {isOverdue ? ' Dikenakan rekomendasi potongan Tukin 0.05%.' : ' Harap segera unggah bukti dukung sebelum H+5.'}
+                          </div>
+                          <button
+                            onClick={() => {
+                              setActiveTab('activities')
+                              setHighlightedActivityId(act.id)
+                            }}
+                            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                              isOverdue 
+                                ? 'bg-rose-600 hover:bg-rose-500 border-rose-500 text-white shadow-md hover:scale-[1.02]' 
+                                : 'bg-amber-600 hover:bg-amber-500 border-amber-500 text-white shadow-md hover:scale-[1.02]'
+                            }`}
+                          >
+                            Unggah Bukti
+                          </button>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               )}
@@ -1444,19 +1547,47 @@ export default function DashboardPage() {
             )}
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                Cari Rekomendasi Kegiatan (Sheet 7210)
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                  Cari Rekomendasi Kegiatan (Database SI-BUDI & BPS)
+                </label>
+                {recommendations.length > 0 && (
+                  <span className="text-[10px] text-sky-400 font-medium">
+                    {recommendations.length} kegiatan tersimpan
+                  </span>
+                )}
+              </div>
+
+              {/* Filter Bidang / Fungsi */}
+              {availableBidangs.length > 2 && (
+                <div className="flex items-center gap-1.5 mb-2 overflow-x-auto pb-1 text-[10px] no-scrollbar">
+                  {availableBidangs.map((b: string) => (
+                    <button
+                      key={b}
+                      type="button"
+                      onClick={() => setRecBidangFilter(b)}
+                      className={`px-2.5 py-1 rounded-full border transition-all shrink-0 cursor-pointer ${
+                        recBidangFilter === b
+                          ? 'bg-sky-500 text-white border-sky-400 font-semibold shadow-sm shadow-sky-500/30'
+                          : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                      }`}
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Ketik kata kunci kegiatan (misal: Sensus, Publisitas, Pengolahan)..."
+                  placeholder="Ketik kata kunci kegiatan (misal: Sensus, Publisitas, Pengolahan, Evaluasi)..."
                   value={searchRec}
                   onChange={(e) => setSearchRec(e.target.value)}
                   className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
                 />
-                {searchRec && filteredRecs.length > 0 && (
-                  <div className="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto bg-slate-950 border border-slate-800 rounded-lg z-50 shadow-xl divide-y divide-slate-900">
+                {((searchRec && filteredRecs.length > 0) || (recBidangFilter !== 'Semua' && filteredRecs.length > 0)) && (
+                  <div className="absolute left-0 right-0 mt-1 max-h-52 overflow-y-auto bg-slate-950 border border-slate-800 rounded-lg z-50 shadow-2xl divide-y divide-slate-900">
                     {filteredRecs.map((rec, i) => (
                       <button
                         key={i}
@@ -1464,13 +1595,26 @@ export default function DashboardPage() {
                         onClick={() => {
                           setActName(rec.rincian)
                           setActUnit(rec.satuan)
+                          setActOutput(rec.outputRincian || '')
                           setSearchRec('')
                         }}
-                        className="w-full text-left px-3 py-2 text-xs hover:bg-sky-950/40 text-slate-300 hover:text-slate-100 transition-colors"
+                        className="w-full text-left px-3 py-2 text-xs hover:bg-sky-950/40 text-slate-300 hover:text-slate-100 transition-colors group cursor-pointer"
                       >
-                        <div className="font-semibold text-sky-400 text-[10px] uppercase tracking-wider">{rec.bidang} &raquo; {rec.ro}</div>
-                        <div className="mt-0.5">{rec.rincian}</div>
-                        <div className="text-[10px] text-slate-500 mt-0.5">Output: {rec.outputRincian} ({rec.satuan})</div>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold text-sky-400 text-[10px] uppercase tracking-wider">
+                            {rec.bidang || 'Umum'} {rec.ro ? `» ${rec.ro}` : ''}
+                          </span>
+                          {rec.usageCount && rec.usageCount > 1 && (
+                            <span className="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-medium">
+                              🔥 {rec.usageCount}x dipakai
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-0.5 font-medium group-hover:text-sky-300 transition-colors">{rec.rincian}</div>
+                        <div className="text-[10px] text-slate-400 mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5">
+                          {rec.outputRincian && <span>Output: <span className="text-slate-300">{rec.outputRincian}</span></span>}
+                          <span>Satuan: <span className="text-sky-300 font-semibold">{rec.satuan}</span></span>
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -1479,27 +1623,52 @@ export default function DashboardPage() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Nama / Uraian Kegiatan</label>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                Nama / Uraian Kegiatan <span className="text-rose-400">*</span>
+              </label>
               <textarea
                 required
                 rows={3}
                 value={actName}
                 onChange={(e) => setActName(e.target.value)}
-                placeholder="Deskripsi kegiatan bulanan..."
+                placeholder="Deskripsi / rincian kegiatan bulanan..."
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Satuan</label>
-              <input
-                required
-                type="text"
-                value={actUnit}
-                onChange={(e) => setActUnit(e.target.value)}
-                placeholder="Laporan / Dokumen / Kuesioner"
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                  Satuan <span className="text-rose-400">*</span>
+                </label>
+                <input
+                  required
+                  type="text"
+                  value={actUnit}
+                  onChange={(e) => setActUnit(e.target.value)}
+                  placeholder="Laporan / Dokumen / Kuesioner / Kegiatan"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                  Target Output (Opsional)
+                </label>
+                <input
+                  type="text"
+                  value={actOutput}
+                  onChange={(e) => setActOutput(e.target.value)}
+                  placeholder="Uraian target output hasil..."
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                />
+              </div>
+            </div>
+
+            <div className="p-2.5 bg-sky-950/20 border border-sky-800/30 rounded-lg flex items-start gap-2">
+              <span className="text-sm">💡</span>
+              <p className="text-[11px] text-sky-200/70 leading-relaxed">
+                <strong className="text-sky-300 font-semibold">Keseragaman Kegiatan:</strong> Uraian kegiatan dan satuan/output yang baru Anda input akan otomatis disimpan ke database sebagai rekomendasi untuk kegiatan berikutnya.
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
