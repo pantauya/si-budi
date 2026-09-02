@@ -83,6 +83,17 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { name, targetVolume, unit, output, annualPlanId, createdById, members, evidenceLink, createdAt, startDate, endDate, bidang, ro, aktivitas } = body
 
+    // Check if annualPlanId exists in DB to prevent Foreign Key constraint errors
+    let validAnnualPlanId = null
+    if (annualPlanId) {
+      const existingPlan = await prisma.annualPlan.findUnique({
+        where: { id: annualPlanId }
+      })
+      if (existingPlan) {
+        validAnnualPlanId = annualPlanId
+      }
+    }
+
     // 1. Create activity
     const activity = await prisma.activity.create({
       data: {
@@ -90,7 +101,7 @@ export async function POST(request: Request) {
         targetVolume: parseFloat(targetVolume),
         unit,
         output: output ? output.trim() : null,
-        annualPlanId: annualPlanId || null,
+        annualPlanId: validAnnualPlanId,
         createdById,
         status: 'SEDANG_BERLANGSUNG',
         startDate: startDate ? new Date(startDate) : null,

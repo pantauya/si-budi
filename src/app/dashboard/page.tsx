@@ -360,6 +360,26 @@ export default function DashboardPage() {
     }
   }
 
+  const handleDeleteActivity = async (activityId: string, activityName: string) => {
+    if (!currentUser) return
+    if (!confirm(`Apakah Anda yakin ingin menghapus kegiatan "${activityName}"?`)) return
+
+    try {
+      const res = await fetch(`/api/activities/${activityId}?userId=${currentUser.id}`, {
+        method: 'DELETE'
+      })
+      const data = await res.json()
+      if (data.success) {
+        setActivities(prev => prev.filter(a => a.id !== activityId))
+      } else {
+        alert('Gagal menghapus kegiatan: ' + (data.error || 'Terjadi kesalahan'))
+      }
+    } catch (err: any) {
+      console.error(err)
+      alert('Terjadi kesalahan saat menghapus kegiatan')
+    }
+  }
+
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!currentUser) return
@@ -642,164 +662,133 @@ export default function DashboardPage() {
           height: 100vh !important;
           overflow: hidden !important;
         }
+        .light-mode {
+          background-color: #f8fafc !important;
+          color: #0f172a !important;
+        }
         .light-mode .glass {
-          background: rgba(255, 255, 255, 0.85) !important;
-          backdrop-filter: blur(16px) !important;
-          -webkit-backdrop-filter: blur(16px) !important;
-          border-color: rgba(203, 213, 225, 0.7) !important;
+          background: #ffffff !important;
+          border: 1px solid #cbd5e1 !important;
+          box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04) !important;
           color: #0f172a !important;
-        }
-        .light-mode .bg-slate-800 {
-          background-color: #f1f5f9 !important;
-          color: #334155 !important;
-          border-color: #cbd5e1 !important;
-        }
-        .light-mode input, .light-mode select, .light-mode textarea {
-          background-color: #ffffff !important;
-          border-color: #cbd5e1 !important;
-          color: #0f172a !important;
-        }
-        .light-mode table th {
-          background-color: #f1f5f9 !important;
-          color: #475569 !important;
-          border-color: #cbd5e1 !important;
-        }
-        .light-mode table thead tr {
-          background-color: #f1f5f9 !important;
-        }
-        .light-mode table td {
-          color: #1e293b !important;
-          border-color: #cbd5e1 !important;
-        }
-        .light-mode table tr {
-          border-color: #e2e8f0 !important;
-        }
-        .light-mode .text-slate-400 {
-          color: #475569 !important;
-        }
-        .light-mode .text-slate-300 {
-          color: #334155 !important;
-        }
-        .light-mode .text-slate-200 {
-          color: #1e293b !important;
-        }
-        .light-mode .text-white {
-          color: #0f172a !important;
-        }
-        .light-mode .border-slate-800, .light-mode .border-slate-800\\/80, .light-mode .border-slate-850 {
-          border-color: #cbd5e1 !important;
         }
         .light-mode aside {
           background-color: #ffffff !important;
           border-color: #cbd5e1 !important;
-        }
-        .light-mode aside button {
-          color: #475569 !important;
-        }
-        .light-mode aside button:hover {
-          background-color: #f1f5f9 !important;
-          color: #0f172a !important;
-        }
-        .light-mode aside .border-b, .light-mode aside .border-t {
-          border-color: #cbd5e1 !important;
-        }
-        .light-mode aside .text-white {
-          color: #0f172a !important;
+          box-shadow: 2px 0 12px -2px rgba(15, 23, 42, 0.05) !important;
         }
         .light-mode header {
-          background-color: rgba(255, 255, 255, 0.8) !important;
+          background-color: rgba(255, 255, 255, 0.95) !important;
+          border-color: #cbd5e1 !important;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        .light-mode input, .light-mode select, .light-mode textarea {
+          background-color: #ffffff !important;
+          border: 1.5px solid #cbd5e1 !important;
+          color: #0f172a !important;
+          font-weight: 500 !important;
+        }
+        .light-mode input:focus, .light-mode select:focus, .light-mode textarea:focus {
+          border-color: #0284c7 !important;
+          box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+        }
+        .light-mode table {
           border-color: #cbd5e1 !important;
         }
-        .light-mode header h2 {
-          color: #0f172a !important;
-        }
-        .light-mode .bg-slate-900\\/40 {
-          background-color: rgba(241, 245, 249, 0.5) !important;
-        }
-        .light-mode .bg-slate-900 {
-          background-color: #ffffff !important;
-        }
-        .light-mode .bg-slate-950 {
-          background-color: #f8fafc !important;
-        }
-        .light-mode .bg-slate-950\\/40 {
-          background-color: rgba(226, 232, 240, 0.4) !important;
-        }
-        .light-mode .border-sky-850 {
-          border-color: rgba(14, 165, 233, 0.3) !important;
-        }
-        .light-mode .bg-sky-950\\/40 {
-          background-color: rgba(14, 165, 233, 0.05) !important;
-        }
-        .light-mode .text-sky-400 {
-          color: #0284c7 !important;
-        }
-        .light-mode .text-sky-300 {
-          color: #0369a1 !important;
-        }
-        .light-mode .bg-sky-500\\/10 {
-          background-color: rgba(14, 165, 233, 0.15) !important;
-        }
-        .light-mode .text-emerald-400 {
-          color: #059669 !important;
-        }
-        .light-mode .bg-emerald-500\\/10 {
-          background-color: rgba(16, 185, 129, 0.15) !important;
-        }
-        .light-mode .text-amber-400 {
-          color: #d97706 !important;
-        }
-        .light-mode .bg-amber-500\\/10 {
-          background-color: rgba(245, 158, 11, 0.15) !important;
-        }
-        .light-mode .text-slate-100 {
-          color: #0f172a !important;
-        }
-        .light-mode .text-slate-200 {
+        .light-mode table th {
+          background-color: #f1f5f9 !important;
           color: #1e293b !important;
+          font-weight: 700 !important;
+          border-color: #cbd5e1 !important;
         }
-        .light-mode .text-slate-300 {
-          color: #334155 !important;
+        .light-mode table td {
+          color: #0f172a !important;
+          border-color: #e2e8f0 !important;
         }
-        .light-mode .text-slate-400 {
-          color: #475569 !important;
-        }
-        .light-mode .text-slate-500 {
-          color: #64748b !important;
+        .light-mode table tr {
+          border-color: #e2e8f0 !important;
         }
         .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
           color: #0f172a !important;
+          font-weight: 700 !important;
         }
-        .light-mode .bg-slate-900\\/80 {
-          background-color: #f8fafc !important;
+        .light-mode .text-slate-100 { color: #0f172a !important; }
+        .light-mode .text-slate-200 { color: #0f172a !important; }
+        .light-mode .text-slate-300 { color: #1e293b !important; }
+        .light-mode .text-slate-400 { color: #334155 !important; }
+        .light-mode .text-slate-500 { color: #475569 !important; }
+        
+        .light-mode .bg-slate-900 { background-color: #ffffff !important; }
+        .light-mode .bg-slate-950 { background-color: #f8fafc !important; }
+        .light-mode .bg-slate-900\/60 { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; }
+        .light-mode .bg-slate-900\/40 { background-color: #f8fafc !important; border-color: #e2e8f0 !important; }
+        .light-mode .bg-slate-800 { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+        .light-mode .hover\:bg-slate-700:hover { background-color: #e2e8f0 !important; color: #0f172a !important; }
+
+        /* Preserve white text on primary buttons */
+        .light-mode .bg-sky-600, .light-mode .bg-sky-500,
+        .light-mode .bg-emerald-600, .light-mode .bg-emerald-500,
+        .light-mode .bg-rose-600, .light-mode .bg-rose-500,
+        .light-mode .bg-indigo-600, .light-mode .bg-gradient-to-r {
+          color: #ffffff !important;
         }
-        .light-mode .bg-slate-900\\/60 {
-          background-color: #f1f5f9 !important;
+        .light-mode .bg-sky-600 *, .light-mode .bg-sky-500 *,
+        .light-mode .bg-emerald-600 *, .light-mode .bg-emerald-500 *,
+        .light-mode .bg-rose-600 *, .light-mode .bg-rose-500 *,
+        .light-mode .bg-indigo-600 *, .light-mode .bg-gradient-to-r * {
+          color: #ffffff !important;
         }
-        .light-mode .bg-slate-900\\/40 {
-          background-color: rgba(241, 245, 249, 0.6) !important;
+
+        /* Specific badge & action button styles for light mode */
+        .light-mode .bg-sky-950\/40 {
+          background-color: #f0f9ff !important;
+          border-color: #38bdf8 !important;
+          color: #0369a1 !important;
         }
-        .light-mode .bg-slate-900\\/10 {
-          background-color: rgba(241, 245, 249, 0.2) !important;
+        .light-mode .border-sky-850 {
+          border-color: #bae6fd !important;
         }
-        .light-mode .bg-slate-800\\/80, .light-mode .bg-slate-800\\/90, .light-mode .bg-slate-800\\/60 {
-          background-color: #f1f5f9 !important;
+        .light-mode .text-sky-400 {
+          color: #0284c7 !important;
+          font-weight: 700 !important;
         }
-        .light-mode .bg-slate-800\\/50 {
-          background-color: rgba(241, 245, 249, 0.5) !important;
+        .light-mode .text-sky-300 {
+          color: #0369a1 !important;
+          font-weight: 700 !important;
         }
-        .light-mode .hover\\:bg-slate-800\\/50:hover, .light-mode .hover\\:bg-slate-800\\/60:hover {
-          background-color: #f1f5f9 !important;
-          color: #0f172a !important;
+
+        /* Rose / Hapus button in light mode */
+        .light-mode .bg-rose-950\/40 {
+          background-color: #fff1f2 !important;
+          border-color: #fda4af !important;
+          color: #e11d48 !important;
+          font-weight: 700 !important;
         }
-        .light-mode .hover\\:bg-slate-700:hover {
-          background-color: #e2e8f0 !important;
-          color: #0f172a !important;
+        .light-mode .bg-rose-950\/40:hover {
+          background-color: #ffe4e6 !important;
+          border-color: #f43f5e !important;
         }
-        .light-mode .border-slate-800\\/80 {
-          border-color: #cbd5e1 !important;
+
+        /* Teal / Verifikasi button in light mode */
+        .light-mode .bg-teal-950\/40 {
+          background-color: #f0fdf4 !important;
+          border-color: #86efac !important;
+          color: #15803d !important;
+          font-weight: 700 !important;
         }
-        .light-mode .border-slate-800\\/40 {
+
+        /* Emerald badge & score */
+        .light-mode .text-emerald-400 {
+          color: #059669 !important;
+          font-weight: 800 !important;
+        }
+
+        /* Amber / Warning elements */
+        .light-mode .text-amber-400 {
+          color: #d97706 !important;
+          font-weight: 700 !important;
+        }
+        .light-mode .border-slate-800, .light-mode .border-slate-800\/80, .light-mode .border-slate-850 {
           border-color: #cbd5e1 !important;
         }
       `}} />
@@ -1522,6 +1511,19 @@ export default function DashboardPage() {
                              className="px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white rounded-lg text-xs font-semibold shadow"
                            >
                              Beri Penilaian (SKP)
+                           </button>
+                         )}
+
+                         {(currentUser.id === act.createdById || currentUser.role === 'admin' || currentUser.role === 'ketua_tim') && (
+                           <button
+                             onClick={() => handleDeleteActivity(act.id, act.name)}
+                             className="px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/60 text-rose-300 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                             title="Hapus Kegiatan"
+                           >
+                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                               <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                             </svg>
+                             Hapus
                            </button>
                          )}
                       </div>

@@ -16,7 +16,8 @@
   - [2.2 Menginput Rencana Kinerja Bulanan (SKP Utama & Tambahan)](#22-menginput-rencana-kinerja-bulanan-skp-utama--tambahan)
   - [2.3 Menggunakan Rekomendasi Kegiatan Master BPS (Auto-Fill & Auto-Save)](#23-menggunakan-rekomendasi-kegiatan-master-bps-auto-fill--auto-save)
   - [2.4 Mengunggah & Mengaitkan Bukti Dukung (File / Google Drive)](#24-mengunggah--mengaitkan-bukti-dukung-file--google-drive)
-  - [2.5 Pemantauan Kalender & Status Kegiatan](#25-pemantauan-kalender--status-kegiatan)
+  - [2.5 Menghapus Kegiatan](#25-menghapus-kegiatan)
+  - [2.6 Pemantauan Kalender & Status Kegiatan](#26-pemantauan-kalender--status-kegiatan)
 - [BAGIAN III: PANDUAN PERAN KETUA TIM (EVALUATOR)](#bagian-iii-panduan-peran-ketua-tim-evaluator)
   - [3.1 Alur Kerja Ketua Tim](#31-alur-kerja-ketua-tim)
   - [3.2 Pemantauan Dasbor Progres Kinerja Tim](#32-pemantauan-dasbor-progres-kinerja-tim)
@@ -103,7 +104,12 @@ flowchart LR
    - 🔗 **Tautan Google Drive**: Tempelkan URL berkas Google Drive bukti dukung. Pastikan akses tautan Drive sudah dibuka untuk publik/internal.
 4. Beri nama keterangan bukti dukung, lalu klik **Simpan Bukti**. Status kegiatan berubah menjadi `LENGKAP`.
 
-### 2.5 Pemantauan Kalender & Status Kegiatan
+### 2.5 Menghapus Kegiatan
+1. Pada kartu kegiatan di tab **Rencana Kinerja & Bukti**, temukan tombol **Hapus** (berwarna merah).
+2. Tombol ini tersedia bagi **Pembuat Kegiatan**, **Ketua Tim**, atau **Admin**.
+3. Klik **Hapus**, lalu konfirmasi pada dialog yang muncul. Kegiatan akan secara permanen dihapus dan dicatat pada log sistem.
+
+### 2.6 Pemantauan Kalender & Status Kegiatan
 - Buka tab **Kalender Kegiatan** untuk melihat jadwal sebaran tugas bulanan.
 - Klik pada tanggal tertentu untuk melihat rincian kegiatan yang berlangsung pada hari tersebut.
 
