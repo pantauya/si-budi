@@ -791,6 +791,10 @@ export default function DashboardPage() {
         .light-mode .border-slate-800, .light-mode .border-slate-800\/80, .light-mode .border-slate-850 {
           border-color: #cbd5e1 !important;
         }
+
+        .light-mode aside .text-white {
+          color: #0f172a !important;
+        }
       `}} />
       
       {/* Mobile Backdrop Overlay */}
@@ -815,7 +819,7 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div className={`min-w-0 ${sidebarCollapsed ? 'block md:hidden' : 'block'}`}>
-              <span className="text-lg font-extrabold text-white tracking-tight block truncate">SI-BUDI</span>
+              <span className={`text-lg font-extrabold tracking-tight block truncate ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>SI-BUDI</span>
               <span className="block text-[9px] text-slate-400 font-semibold tracking-wider uppercase truncate">BPS KAB. SIGI</span>
             </div>
           </div>
@@ -942,7 +946,9 @@ export default function DashboardPage() {
         </nav>
 
         {/* User profile footer */}
-        <div className={`border-t border-slate-800 bg-slate-900/40 transition-all ${
+        <div className={`border-t transition-all ${
+          theme === 'light' ? 'border-slate-200 bg-white' : 'border-slate-800 bg-slate-900/40'
+        } ${
           sidebarCollapsed 
             ? 'p-3 md:flex md:flex-col md:items-center md:justify-center md:gap-2.5 p-4 flex items-center justify-between flex-wrap gap-2' 
             : 'p-4 flex items-center justify-between flex-wrap gap-2'
@@ -988,8 +994,8 @@ export default function DashboardPage() {
               {currentUser.name[0]}
             </div>
             <div className={`min-w-0 ${sidebarCollapsed ? 'block md:hidden' : 'block'}`}>
-              <p className="text-xs font-bold text-slate-200 truncate group-hover:text-sky-300 transition-colors">{currentUser.name}</p>
-              <p className="text-[10px] text-slate-400 uppercase tracking-wider">{currentUser.role.replace('_', ' ')}</p>
+              <p className={`text-xs font-bold truncate transition-colors ${theme === 'light' ? 'text-slate-900 group-hover:text-sky-600' : 'text-slate-200 group-hover:text-sky-300'}`}>{currentUser.name}</p>
+              <p className={`text-[10px] uppercase tracking-wider ${theme === 'light' ? 'text-slate-500 font-semibold' : 'text-slate-400'}`}>{currentUser.role.replace('_', ' ')}</p>
             </div>
           </button>
 
