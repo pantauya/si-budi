@@ -568,20 +568,23 @@ export default function DashboardPage() {
 
   if (!currentUser) return null
 
-  // Calculate quick stats
-  const totalAct = activities.length
-  const completedAct = activities.filter(a => a.status === 'DINILAI').length
-  const pendingAct = activities.filter(a => a.status === 'MENUNGGU_BUKTI').length
-  const inProgressAct = activities.filter(a => a.status === 'SEDANG_BERLANGSUNG').length
-  const verifiedAct = activities.filter(a => a.isVerified).length
+  // Get current user's activities for personal stats
+  const myActivities = activities.filter(a => a.createdById === currentUser.id || a.members.some(m => m.user.id === currentUser.id))
 
-  const evaluatedActivities = activities.filter(a => a.status === 'DINILAI')
+  // Calculate quick stats
+  const totalAct = myActivities.length
+  const completedAct = myActivities.filter(a => a.status === 'DINILAI').length
+  const pendingAct = myActivities.filter(a => a.status === 'MENUNGGU_BUKTI').length
+  const inProgressAct = myActivities.filter(a => a.status === 'SEDANG_BERLANGSUNG').length
+  const verifiedAct = myActivities.filter(a => a.isVerified).length
+
+  const evaluatedActivities = myActivities.filter(a => a.status === 'DINILAI')
   const avgScore = evaluatedActivities.length > 0
     ? (evaluatedActivities.reduce((acc, curr) => acc + (curr.assessments[0]?.nilaiAkhir || 0), 0) / evaluatedActivities.length).toFixed(2)
     : '0.00'
 
   // Calculate Tukin reduction simulation (H+5, 0.05% cut)
-  const overdueCount = activities.filter(a => {
+  const overdueCount = myActivities.filter(a => {
     const isUncompleted = a.status !== 'DINILAI' && a.status !== 'LENGKAP'
     const ageInMs = Date.now() - new Date(a.createdAt).getTime()
     const ageInDays = ageInMs / (1000 * 60 * 60 * 24)
@@ -590,7 +593,7 @@ export default function DashboardPage() {
   const estimatedTukinCut = overdueCount * 0.05
 
   // Find activities that need reminders (warningActivities)
-  const warningActivities = activities.filter(a => {
+  const warningActivities = myActivities.filter(a => {
     const hasNoEvidence = !a.evidences || a.evidences.length === 0
     const isUncompleted = a.status !== 'DINILAI' && a.status !== 'LENGKAP'
     const ageInMs = Date.now() - new Date(a.createdAt).getTime()
@@ -720,10 +723,13 @@ export default function DashboardPage() {
         
         .light-mode .bg-slate-900 { background-color: #ffffff !important; }
         .light-mode .bg-slate-950 { background-color: #f8fafc !important; }
-        .light-mode .bg-slate-900\/60 { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; }
-        .light-mode .bg-slate-900\/40 { background-color: #f8fafc !important; border-color: #e2e8f0 !important; }
+        .light-mode .bg-slate-850 { background-color: #ffffff !important; }
+        .light-mode .bg-slate-900\\/60, .light-mode .bg-slate-900\\/50 { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; }
+        .light-mode .bg-slate-900\\/40, .light-mode .bg-slate-900\\/10 { background-color: #f8fafc !important; border-color: #e2e8f0 !important; }
         .light-mode .bg-slate-800 { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
-        .light-mode .hover\:bg-slate-700:hover { background-color: #e2e8f0 !important; color: #0f172a !important; }
+        .light-mode .bg-slate-800\\/80, .light-mode .bg-slate-800\\/60, .light-mode .bg-slate-800\\/50 { background-color: #f8fafc !important; border-color: #e2e8f0 !important; }
+        .light-mode .hover\\:bg-slate-700:hover, .light-mode .hover\\:bg-slate-900\\/10:hover, .light-mode .hover\\:bg-slate-800\\/50:hover { background-color: #e2e8f0 !important; color: #0f172a !important; }
+        .light-mode .border-slate-850, .light-mode .border-slate-900\\/40, .light-mode .border-slate-800\\/80, .light-mode .border-slate-800\\/60, .light-mode .border-slate-700 { border-color: #cbd5e1 !important; }
 
         /* Preserve white text on primary buttons */
         .light-mode .bg-sky-600, .light-mode .bg-sky-500,
@@ -740,7 +746,7 @@ export default function DashboardPage() {
         }
 
         /* Specific badge & action button styles for light mode */
-        .light-mode .bg-sky-950\/40 {
+        .light-mode .bg-sky-950\\/40 {
           background-color: #f0f9ff !important;
           border-color: #38bdf8 !important;
           color: #0369a1 !important;
@@ -758,19 +764,19 @@ export default function DashboardPage() {
         }
 
         /* Rose / Hapus button in light mode */
-        .light-mode .bg-rose-950\/40 {
+        .light-mode .bg-rose-950\\/40 {
           background-color: #fff1f2 !important;
           border-color: #fda4af !important;
           color: #e11d48 !important;
           font-weight: 700 !important;
         }
-        .light-mode .bg-rose-950\/40:hover {
+        .light-mode .bg-rose-950\\/40:hover {
           background-color: #ffe4e6 !important;
           border-color: #f43f5e !important;
         }
 
         /* Teal / Verifikasi button in light mode */
-        .light-mode .bg-teal-950\/40 {
+        .light-mode .bg-teal-950\\/40 {
           background-color: #f0fdf4 !important;
           border-color: #86efac !important;
           color: #15803d !important;
@@ -788,7 +794,7 @@ export default function DashboardPage() {
           color: #d97706 !important;
           font-weight: 700 !important;
         }
-        .light-mode .border-slate-800, .light-mode .border-slate-800\/80, .light-mode .border-slate-850 {
+        .light-mode .border-slate-800, .light-mode .border-slate-800\\/80, .light-mode .border-slate-850 {
           border-color: #cbd5e1 !important;
         }
 
@@ -1037,7 +1043,7 @@ export default function DashboardPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
             </button>
-            <h2 className="text-sm sm:text-lg font-semibold text-white uppercase tracking-wider truncate">
+            <h2 className="text-sm sm:text-lg font-semibold text-slate-100 uppercase tracking-wider truncate">
               {activeTab === 'summary' && 'Ringkasan Kinerja'}
               {activeTab === 'activities' && 'Rencana Kinerja Bulanan'}
               {activeTab === 'calendar' && 'Kalender Rencana Kegiatan'}
@@ -1095,7 +1101,7 @@ export default function DashboardPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
                 <div className="glass p-6 rounded-xl border border-slate-800/80">
                   <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Kegiatan</span>
-                  <span className="block text-3xl font-bold mt-2 text-white">{totalAct}</span>
+                  <span className="block text-3xl font-bold mt-2 text-slate-100">{totalAct}</span>
                 </div>
                 <div className="glass p-6 rounded-xl border border-slate-800/80">
                   <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Lengkap & Relevan</span>
@@ -1555,7 +1561,7 @@ export default function DashboardPage() {
                   <button onClick={prevMonth} className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-bold">
                     &lt; Sebelum
                   </button>
-                  <span className="text-sm font-bold text-white min-w-32 text-center">
+                  <span className="text-sm font-bold text-slate-100 min-w-32 text-center">
                     {monthNames[month]} {year}
                   </span>
                   <button onClick={nextMonth} className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-bold">
@@ -2230,7 +2236,7 @@ export default function DashboardPage() {
                       </span>
                       <span className="text-[10px] text-slate-400">Target: {act.targetVolume} {act.unit}</span>
                     </div>
-                    <h4 className="text-xs font-semibold text-white">{act.name}</h4>
+                    <h4 className="text-xs font-semibold text-slate-100">{act.name}</h4>
                     <p className="text-[10px] text-slate-400">Pegawai: {act.creator.name}</p>
                   </div>
                 ))}
