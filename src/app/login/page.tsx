@@ -86,9 +86,11 @@ export default function LoginPage() {
               />
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 p-1 rounded-md text-slate-400 hover:text-sky-600 hover:bg-slate-100 transition-all cursor-pointer focus:outline-none"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-md text-slate-400 hover:text-sky-600 hover:bg-slate-100 transition-all cursor-pointer focus:outline-none"
                 title={showPassword ? "Sembunyikan Password" : "Tampilkan Password"}
+                aria-label={showPassword ? "Sembunyikan Password" : "Tampilkan Password"}
               >
                 {showPassword ? (
                   // Eye Slash Icon (Clear & Contrast)

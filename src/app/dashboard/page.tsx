@@ -73,6 +73,7 @@ export default function DashboardPage() {
 
   // Form states
   const [showActivityModal, setShowActivityModal] = useState(false)
+  const [submittingActivity, setSubmittingActivity] = useState(false)
   const [actName, setActName] = useState('')
   const [actTarget, setActTarget] = useState('1')
   const [actUnit, setActUnit] = useState('')
@@ -281,8 +282,9 @@ export default function DashboardPage() {
 
   const handleCreateActivity = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!currentUser) return
+    if (!currentUser || submittingActivity) return
 
+    setSubmittingActivity(true)
     setUploading(true)
     try {
       const res = await fetch('/api/activities', {
@@ -304,9 +306,23 @@ export default function DashboardPage() {
       const data = await res.json()
 
       if (data.success) {
+        // Langsung tutup modal dan bersihkan form agar UI responsif seketika
+        setShowActivityModal(false)
+        setActName('')
+        setActTarget('1')
+        setActUnit('')
+        setActOutput('')
+        setActPlanId('')
+        setActMembers([])
+        setActStartDate(new Date().toISOString().split('T')[0])
+        setActEndDate(new Date().toISOString().split('T')[0])
+        setIsAdditionalPlan(false)
+
         // Upload any attached files if the user is a member (anggota)
         if (currentUser.role === 'anggota' && activityUploadFiles.length > 0) {
-          const uploadPromises = activityUploadFiles.map(async (file) => {
+          const filesToUpload = [...activityUploadFiles]
+          setActivityUploadFiles([])
+          const uploadPromises = filesToUpload.map(async (file) => {
             const formData = new FormData()
             formData.append('file', file)
             formData.append('userId', currentUser.id)
@@ -320,6 +336,8 @@ export default function DashboardPage() {
           })
           
           await Promise.all(uploadPromises)
+        } else {
+          setActivityUploadFiles([])
         }
 
         // Refresh activities list
@@ -327,36 +345,24 @@ export default function DashboardPage() {
         const listData = await listRes.json()
         if (listData.success) setActivities(listData.activities)
 
-        // Refresh recommendations from database
-        try {
-          const recsRes = await fetch('/api/recommendations', { cache: 'no-store' })
-          const recsData = await recsRes.json()
-          if (recsData.success && Array.isArray(recsData.recommendations)) {
-            setRecommendations(recsData.recommendations)
-          }
-        } catch (e) {
-          console.error('Error refreshing recommendations:', e)
-        }
-
-        // Reset forms
-        setActName('')
-        setActTarget('1')
-        setActUnit('')
-        setActOutput('')
-        setActPlanId('')
-        setActMembers([])
-        setActivityUploadFiles([])
-        setActStartDate(new Date().toISOString().split('T')[0])
-        setActEndDate(new Date().toISOString().split('T')[0])
-        setIsAdditionalPlan(false)
-        setShowActivityModal(false)
+        // Refresh recommendations from database (tanpa blocking UI)
+        fetch('/api/recommendations', { cache: 'no-store' })
+          .then(r => r.json())
+          .then(recsData => {
+            if (recsData.success && Array.isArray(recsData.recommendations)) {
+              setRecommendations(recsData.recommendations)
+            }
+          })
+          .catch(e => console.error('Error refreshing recommendations:', e))
       } else {
         alert('Gagal membuat kegiatan: ' + data.error)
       }
     } catch (err) {
       console.error(err)
+      alert('Terjadi kesalahan saat menyimpan rencana kegiatan.')
     } finally {
       setUploading(false)
+      setSubmittingActivity(false)
     }
   }
 
@@ -1731,8 +1737,12 @@ export default function DashboardPage() {
       {/* MODAL: TAMBAH KEGIATAN */}
       {showActivityModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <form onSubmit={handleCreateActivity} className="w-full max-w-lg glass border border-slate-800 rounded-xl overflow-hidden shadow-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">Tambah Kegiatan Bulanan</h3>
+          <form onSubmit={handleCreateActivity} className={`w-full max-w-lg rounded-xl overflow-hidden shadow-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto ${
+            theme === 'light'
+              ? 'bg-white border border-slate-200 text-slate-800'
+              : 'glass border border-slate-800 text-slate-200'
+          }`}>
+            <h3 className={`text-sm font-bold uppercase tracking-wider ${theme === 'light' ? 'text-slate-900' : 'text-slate-300'}`}>Tambah Kegiatan Bulanan</h3>
 
             <div className="flex items-center gap-2 pb-1">
               <input
@@ -1745,21 +1755,25 @@ export default function DashboardPage() {
                     setActPlanId("")
                   }
                 }}
-                className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-sky-500 focus:ring-sky-500 cursor-pointer"
+                className="w-4 h-4 rounded border-slate-400 bg-slate-100 text-sky-600 focus:ring-sky-500 cursor-pointer"
               />
-              <label htmlFor="additionalPlanCheckbox" className="text-xs font-bold text-slate-300 cursor-pointer select-none">
+              <label htmlFor="additionalPlanCheckbox" className={`text-xs font-bold cursor-pointer select-none ${theme === 'light' ? 'text-slate-800' : 'text-slate-300'}`}>
                 Rencana Kinerja Tambahan (Tanpa SKP Induk)
               </label>
             </div>
 
             {!isAdditionalPlan && (
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Butir SKP Induk</label>
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>Butir SKP Induk</label>
                 <select
                   required={!isAdditionalPlan}
                   value={actPlanId}
                   onChange={(e) => setActPlanId(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 >
                   <option value="">-- Pilih Target SKP --</option>
                   {users.find(u => u.id === currentUser.id)?.annualPlans?.map(p => (
@@ -1775,11 +1789,11 @@ export default function DashboardPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
                   Cari Rekomendasi Kegiatan (Database SI-BUDI & BPS)
                 </label>
                 {recommendations.length > 0 && (
-                  <span className="text-[10px] text-sky-400 font-medium">
+                  <span className={`text-[10px] font-medium ${theme === 'light' ? 'text-sky-600 font-bold' : 'text-sky-400'}`}>
                     {recommendations.length} kegiatan tersimpan
                   </span>
                 )}
@@ -1796,7 +1810,9 @@ export default function DashboardPage() {
                       className={`px-2.5 py-1 rounded-full border transition-all shrink-0 cursor-pointer ${
                         recBidangFilter === b
                           ? 'bg-sky-500 text-white border-sky-400 font-semibold shadow-sm shadow-sky-500/30'
-                          : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                          : theme === 'light'
+                            ? 'bg-slate-100 text-slate-600 border-slate-300 hover:bg-slate-200 hover:text-slate-900'
+                            : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
                       }`}
                     >
                       {b}
@@ -1811,10 +1827,18 @@ export default function DashboardPage() {
                   placeholder="Ketik kata kunci kegiatan (misal: Sensus, Publisitas, Pengolahan, Evaluasi)..."
                   value={searchRec}
                   onChange={(e) => setSearchRec(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 />
                 {((searchRec && filteredRecs.length > 0) || (recBidangFilter !== 'Semua' && filteredRecs.length > 0)) && (
-                  <div className="absolute left-0 right-0 mt-1 max-h-52 overflow-y-auto bg-slate-950 border border-slate-800 rounded-lg z-50 shadow-2xl divide-y divide-slate-900">
+                  <div className={`absolute left-0 right-0 mt-1 max-h-52 overflow-y-auto rounded-lg z-50 shadow-2xl divide-y ${
+                    theme === 'light'
+                      ? 'bg-white border border-slate-300 divide-slate-100'
+                      : 'bg-slate-950 border border-slate-800 divide-slate-900'
+                  }`}>
                     {filteredRecs.map((rec, i) => (
                       <button
                         key={i}
@@ -1825,22 +1849,26 @@ export default function DashboardPage() {
                           setActOutput(rec.outputRincian || '')
                           setSearchRec('')
                         }}
-                        className="w-full text-left px-3 py-2 text-xs hover:bg-sky-950/40 text-slate-300 hover:text-slate-100 transition-colors group cursor-pointer"
+                        className={`w-full text-left px-3 py-2 text-xs transition-colors group cursor-pointer ${
+                          theme === 'light'
+                            ? 'hover:bg-sky-50 text-slate-700 hover:text-sky-950'
+                            : 'hover:bg-sky-950/40 text-slate-300 hover:text-slate-100'
+                        }`}
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-semibold text-sky-400 text-[10px] uppercase tracking-wider">
+                          <span className={`font-semibold text-[10px] uppercase tracking-wider ${theme === 'light' ? 'text-sky-700' : 'text-sky-400'}`}>
                             {rec.bidang || 'Umum'} {rec.ro ? `» ${rec.ro}` : ''}
                           </span>
                           {rec.usageCount && rec.usageCount > 1 && (
-                            <span className="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-medium">
+                            <span className="text-[9px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-medium">
                               🔥 {rec.usageCount}x dipakai
                             </span>
                           )}
                         </div>
-                        <div className="mt-0.5 font-medium group-hover:text-sky-300 transition-colors">{rec.rincian}</div>
-                        <div className="text-[10px] text-slate-400 mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5">
-                          {rec.outputRincian && <span>Output: <span className="text-slate-300">{rec.outputRincian}</span></span>}
-                          <span>Satuan: <span className="text-sky-300 font-semibold">{rec.satuan}</span></span>
+                        <div className={`mt-0.5 font-medium transition-colors ${theme === 'light' ? 'text-slate-900 group-hover:text-sky-700' : 'group-hover:text-sky-300'}`}>{rec.rincian}</div>
+                        <div className={`text-[10px] mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>
+                          {rec.outputRincian && <span>Output: <span className={theme === 'light' ? 'text-slate-700' : 'text-slate-300'}>{rec.outputRincian}</span></span>}
+                          <span>Satuan: <span className={`font-semibold ${theme === 'light' ? 'text-sky-700' : 'text-sky-300'}`}>{rec.satuan}</span></span>
                         </div>
                       </button>
                     ))}
@@ -1850,8 +1878,8 @@ export default function DashboardPage() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                Nama / Uraian Kegiatan <span className="text-rose-400">*</span>
+              <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
+                Nama / Uraian Kegiatan <span className="text-rose-500">*</span>
               </label>
               <textarea
                 required
@@ -1859,14 +1887,18 @@ export default function DashboardPage() {
                 value={actName}
                 onChange={(e) => setActName(e.target.value)}
                 placeholder="Deskripsi / rincian kegiatan bulanan..."
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                  theme === 'light'
+                    ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400'
+                    : 'bg-slate-900 border border-slate-850 text-slate-200'
+                }`}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                  Satuan <span className="text-rose-400">*</span>
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
+                  Satuan <span className="text-rose-500">*</span>
                 </label>
                 <input
                   required
@@ -1874,11 +1906,15 @@ export default function DashboardPage() {
                   value={actUnit}
                   onChange={(e) => setActUnit(e.target.value)}
                   placeholder="Laporan / Dokumen / Kuesioner / Kegiatan"
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
                   Target Output (Opsional)
                 </label>
                 <input
@@ -1886,38 +1922,57 @@ export default function DashboardPage() {
                   value={actOutput}
                   onChange={(e) => setActOutput(e.target.value)}
                   placeholder="Uraian target output hasil..."
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 />
               </div>
             </div>
 
-            <div className="p-2.5 bg-sky-950/20 border border-sky-800/30 rounded-lg flex items-start gap-2">
+            <div className={`p-2.5 rounded-lg flex items-start gap-2 ${
+              theme === 'light'
+                ? 'bg-sky-50 border border-sky-200 text-sky-900'
+                : 'bg-sky-950/20 border border-sky-800/30 text-sky-200/70'
+            }`}>
               <span className="text-sm">💡</span>
-              <p className="text-[11px] text-sky-200/70 leading-relaxed">
-                <strong className="text-sky-300 font-semibold">Keseragaman Kegiatan:</strong> Uraian kegiatan dan satuan/output yang baru Anda input akan otomatis disimpan ke database sebagai rekomendasi untuk kegiatan berikutnya.
+              <p className="text-[11px] leading-relaxed">
+                <strong className={`font-semibold ${theme === 'light' ? 'text-sky-900 font-bold' : 'text-sky-300'}`}>Keseragaman Kegiatan:</strong>{' '}
+                <span className={theme === 'light' ? 'text-slate-700' : 'text-sky-200/70'}>
+                  Uraian kegiatan dan satuan/output yang baru Anda input akan otomatis disimpan ke database sebagai rekomendasi untuk kegiatan berikutnya.
+                </span>
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tanggal Mulai</label>
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>Tanggal Mulai</label>
                 <input
                   required
                   type="date"
                   value={actStartDate}
                   onChange={(e) => setActStartDate(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tanggal Selesai</label>
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>Tanggal Selesai</label>
                 <input
                   required
                   type="date"
                   value={actEndDate}
                   onChange={(e) => setActEndDate(e.target.value)}
                   min={actStartDate}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-850 rounded-lg text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className={`w-full px-3 py-2 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-sky-500 ${
+                    theme === 'light'
+                      ? 'bg-slate-50 border border-slate-300 text-slate-900'
+                      : 'bg-slate-900 border border-slate-850 text-slate-200'
+                  }`}
                 />
               </div>
             </div>
@@ -1925,10 +1980,18 @@ export default function DashboardPage() {
             {/* Tagging Members (Pegawai) - Only shown to ketua_tim role */}
             {currentUser.role === 'ketua_tim' && (
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tag Anggota Kolaborator (Opsional)</label>
-                <div className="bg-slate-900 border border-slate-850 rounded-lg p-3 max-h-36 overflow-y-auto space-y-2">
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>Tag Anggota Kolaborator (Opsional)</label>
+                <div className={`rounded-lg p-3 max-h-36 overflow-y-auto space-y-2 border ${
+                  theme === 'light'
+                    ? 'bg-slate-50 border-slate-300'
+                    : 'bg-slate-900 border-slate-850'
+                }`}>
                   {users.filter(u => u.role === 'anggota' && u.id !== currentUser.id).map(u => (
-                    <label key={u.id} className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer hover:text-slate-100">
+                    <label key={u.id} className={`flex items-center gap-2 text-xs cursor-pointer ${
+                      theme === 'light'
+                        ? 'text-slate-700 hover:text-slate-950'
+                        : 'text-slate-300 hover:text-slate-100'
+                    }`}>
                       <input
                         type="checkbox"
                         checked={actMembers.includes(u.id)}
@@ -1939,13 +2002,13 @@ export default function DashboardPage() {
                             setActMembers(prev => prev.filter(id => id !== u.id))
                           }
                         }}
-                        className="rounded bg-slate-800 border-slate-700 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 focus:ring-1"
+                        className="rounded border-slate-400 text-sky-600 focus:ring-sky-500"
                       />
                       <span>{u.name} ({u.nip})</span>
                     </label>
                   ))}
                   {users.filter(u => u.role === 'anggota' && u.id !== currentUser.id).length === 0 && (
-                    <p className="text-[10px] text-slate-500 italic">Belum ada pegawai lain untuk ditag.</p>
+                    <p className={`text-[10px] italic ${theme === 'light' ? 'text-slate-500' : 'text-slate-500'}`}>Belum ada pegawai lain untuk ditag.</p>
                   )}
                 </div>
               </div>
@@ -1953,23 +2016,29 @@ export default function DashboardPage() {
             {/* Direct multi-file upload for Anggota */}
             {currentUser.role === 'anggota' && (
               <div>
-                <label className="block text-[11px] font-semibold text-sky-400 uppercase tracking-wider mb-1.5 font-bold">
+                <label className={`block text-[11px] font-semibold uppercase tracking-wider mb-1.5 font-bold ${
+                  theme === 'light' ? 'text-sky-700' : 'text-sky-400'
+                }`}>
                   Unggah Bukti Dukung (Bisa Lebih Dari 1 File)
                 </label>
                 <input
                   type="file"
                   multiple
-                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.png,.jpg,.jpeg,.webp,image/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                   onChange={(e) => {
                     if (e.target.files) {
                       setActivityUploadFiles(Array.from(e.target.files))
                     }
                   }}
-                  className="w-full text-xs text-slate-400 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-sky-600/10 file:text-sky-400 hover:file:bg-sky-600/20 file:cursor-pointer"
+                  className={`w-full text-xs file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:cursor-pointer ${
+                    theme === 'light'
+                      ? 'text-slate-600 file:bg-sky-100 file:text-sky-700 hover:file:bg-sky-200'
+                      : 'text-slate-400 file:bg-sky-600/10 file:text-sky-400 hover:file:bg-sky-600/20'
+                  }`}
                 />
                 {activityUploadFiles.length > 0 && (
-                  <div className="mt-2 text-xs text-slate-400 space-y-1">
-                    <span className="font-semibold text-slate-300">File Terpilih:</span>
+                  <div className={`mt-2 text-xs space-y-1 ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
+                    <span className={`font-semibold ${theme === 'light' ? 'text-slate-800' : 'text-slate-300'}`}>File Terpilih:</span>
                     <ul className="list-disc pl-4">
                       {activityUploadFiles.map((file, i) => (
                         <li key={i} className="truncate">{file.name}</li>
@@ -1984,15 +2053,31 @@ export default function DashboardPage() {
               <button
                 type="button"
                 onClick={() => setShowActivityModal(false)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold"
+                className={`px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer ${
+                  theme === 'light'
+                    ? 'bg-slate-200 hover:bg-slate-300 text-slate-700'
+                    : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
+                }`}
+                disabled={submittingActivity}
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold"
+                disabled={submittingActivity}
+                className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold disabled:opacity-50 flex items-center gap-1.5 cursor-pointer"
               >
-                Simpan Rencana
+                {submittingActivity ? (
+                  <>
+                    <svg className="w-3.5 h-3.5 animate-spin text-white" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Menyimpan...</span>
+                  </>
+                ) : (
+                  'Simpan Rencana'
+                )}
               </button>
             </div>
           </form>
@@ -2023,7 +2108,7 @@ export default function DashboardPage() {
                 required
                 type="file"
                 multiple
-                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.png,.jpg,.jpeg,.webp,image/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 onChange={(e) => {
                   if (e.target.files) {
                     setUploadFiles(Array.from(e.target.files))
